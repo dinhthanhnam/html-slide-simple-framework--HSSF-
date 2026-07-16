@@ -26,14 +26,14 @@ Style: white + red, Montserrat. Philosophy: **shadcn-like authoring** (copy HTML
 | `npx create-hssf` CLI | **Done (PR-11)** |
 | Agent documentation | **Done (PR-12)** |
 | Polish / a11y | **Done (PR-13)** |
-| npm publish | **Done** — `hssf-slides@0.1.1` + `@dinhthanhnam/create-hssf@0.1.2` |
+| npm publish | **0.2.0 ready** — term modal, flow/arrows, fx (publish when approved) |
 
 ## Packages
 
 | Package | npm name | Role |
 |---------|----------|------|
-| Runtime | **`hssf-slides@0.1.1`** | CSS + JS |
-| CLI | **`@dinhthanhnam/create-hssf@0.1.2`** (bin: `create-hssf`) | Scaffold |
+| Runtime | **`hssf-slides@0.2.0`** | CSS + JS |
+| CLI | **`@dinhthanhnam/create-hssf@0.2.0`** (bin: `create-hssf`) | Scaffold |
 
 **npm naming:** short `hssf` / `create-hssf` rejected (similarity). Use **`hssf-slides`** + **`@dinhthanhnam/create-hssf`**.
 
@@ -205,8 +205,8 @@ Docs: [`teaching.md`](./docs/components/teaching.md) · [`visual.md`](./docs/com
 CDN (after publish):
 
 ```
-https://cdn.jsdelivr.net/npm/hssf-slides@0.1.1/dist/hssf.min.css
-https://cdn.jsdelivr.net/npm/hssf-slides@0.1.1/dist/hssf.min.js
+https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.css
+https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.js
 ```
 
 ## Repo layout

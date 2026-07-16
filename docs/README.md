@@ -30,6 +30,9 @@ Agent-first docs for **Rikkei Education** HTML slides.
 | [components/content.md](./components/content.md) | list, callout, table, code |
 | [components/teaching.md](./components/teaching.md) | steps, timeline, compare, agenda |
 | [components/visual.md](./components/visual.md) | icon, stat, diagram, accent |
+| [components/flow.md](./components/flow.md) | flow, arrow, connector |
+| [components/effects.md](./components/effects.md) | hover pulse/spin/lift/glow |
+| [components/term.md](./components/term.md) | glossary term + modal |
 | [components/media.md](./components/media.md) | figure |
 | [components/fragments.md](./components/fragments.md) | `data-hssf-fragment` |
 

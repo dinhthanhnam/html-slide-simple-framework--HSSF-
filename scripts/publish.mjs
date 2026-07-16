@@ -116,8 +116,8 @@ console.log(`
 
 Verify:
   npm view hssf-slides version
-  npm view create-hssf version
-  npx create-hssf@${hssfPkg.version} tmp-hssf-check
+  npm view @dinhthanhnam/create-hssf version
+  npx @dinhthanhnam/create-hssf@${hssfPkg.version} tmp-hssf-check
 
 CDN (may take a minute):
   https://cdn.jsdelivr.net/npm/hssf-slides@${hssfPkg.version}/dist/hssf.min.css

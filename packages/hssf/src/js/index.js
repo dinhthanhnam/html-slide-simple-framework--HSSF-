@@ -35,8 +35,9 @@ import {
   hasVisibleFragments,
   emitFragmentEvent,
 } from "./fragments.js";
+import { attachTerms } from "./terms.js";
 
-export const version = "0.1.1";
+export const version = "0.2.0";
 
 export {
   highlightCode,
@@ -69,6 +70,7 @@ export {
   hasUnrevealedFragments,
   hasVisibleFragments,
   emitFragmentEvent,
+  attachTerms,
 };
 
 /**
@@ -84,6 +86,7 @@ export {
  *   swipe?: boolean,
  *   autofocus?: boolean,
  *   navigation?: boolean,
+ *   terms?: boolean,
  * }} [options]
  */
 export function init(root, options = {}) {
@@ -129,6 +132,12 @@ export function init(root, options = {}) {
     updateChrome(root, ensureActiveSlide(root));
   }
 
+  /** @type {ReturnType<typeof attachTerms> | null} */
+  let termsCtl = null;
+  if (options.terms !== false) {
+    termsCtl = attachTerms(root, { enabled: true });
+  }
+
   const deck = {
     version,
     root,
@@ -172,10 +181,20 @@ export function init(root, options = {}) {
       const i = deck.getIndex();
       return getFragmentState(slides[i] || null);
     },
+    closeTerm() {
+      if (termsCtl) termsCtl.close();
+    },
+    isTermOpen() {
+      return termsCtl ? termsCtl.isOpen() : false;
+    },
     toggleFullscreen() {
       return toggleFullscreen(root);
     },
     destroy() {
+      if (termsCtl) {
+        termsCtl.destroy();
+        termsCtl = null;
+      }
       if (nav) {
         nav.destroy();
         nav = null;
@@ -229,6 +248,10 @@ function emptyDeck(options) {
         complete: true,
         variants: [],
       };
+    },
+    closeTerm() {},
+    isTermOpen() {
+      return false;
     },
     toggleFullscreen() {
       return Promise.resolve(false);

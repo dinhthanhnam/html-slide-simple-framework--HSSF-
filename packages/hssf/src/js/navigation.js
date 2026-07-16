@@ -239,6 +239,13 @@ export function createNavigation(canvas, options = {}, win = globalThis) {
 
   function onKeyDown(e) {
     if (destroyed) return;
+    // Term modal owns keyboard while open (Esc closes; block slide nav)
+    if (
+      typeof canvas.getAttribute === "function" &&
+      canvas.getAttribute("data-hssf-term-open") === "true"
+    ) {
+      return;
+    }
     // ignore when typing in fields
     const t = /** @type {Element | null} */ (e.target);
     if (

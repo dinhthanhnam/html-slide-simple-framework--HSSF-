@@ -1,0 +1,379 @@
+/**
+ * HSSF flow / arrow / connector system (v0.2)
+ *
+ * Teaching diagrams as markup (no absolute SVG paths required):
+ *   .hssf-flow + .hssf-flow__node + .hssf-flow__edge
+ *   .hssf-arrow (standalone chevrons)
+ *   .hssf-connector (line primitives for custom grids)
+ *
+ * Complements .hssf-diagram (simple flex nodes + text arrows).
+ */
+
+/* ── Flow container ─────────────────────────────────────── */
+
+.hssf-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-space-3);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.hssf-flow--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hssf-flow--col {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.hssf-flow--wrap {
+  flex-wrap: wrap;
+}
+
+.hssf-flow--tight {
+  gap: var(--hssf-space-2);
+}
+
+.hssf-flow--loose {
+  gap: var(--hssf-space-5);
+}
+
+/* ── Nodes ──────────────────────────────────────────────── */
+
+.hssf-flow__node {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-space-1);
+  min-width: var(--hssf-flow-node-min-w, 8.5rem);
+  max-width: 100%;
+  padding: var(--hssf-space-4) var(--hssf-space-5);
+  border-radius: var(--hssf-radius-md);
+  border: 1px solid var(--hssf-color-soft-2);
+  background: var(--hssf-color-bg);
+  font-size: var(--hssf-fs-base);
+  font-weight: var(--hssf-fw-semibold);
+  color: var(--hssf-color-text-strong);
+  text-align: center;
+  box-shadow: var(--hssf-shadow-soft);
+  box-sizing: border-box;
+  line-height: var(--hssf-lh-snug);
+}
+
+.hssf-flow__node--primary {
+  background: var(--hssf-color-primary);
+  border-color: var(--hssf-color-primary-deep);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.hssf-flow__node--soft {
+  background: var(--hssf-color-soft);
+  border-color: var(--hssf-color-soft-2);
+  color: var(--hssf-color-primary-deep);
+}
+
+.hssf-flow__node--outline {
+  background: transparent;
+  border: 2px solid var(--hssf-color-primary);
+  box-shadow: none;
+}
+
+.hssf-flow__node--sm {
+  min-width: 5.5rem;
+  padding: var(--hssf-space-2) var(--hssf-space-3);
+  font-size: var(--hssf-fs-sm);
+}
+
+.hssf-flow__node-sub {
+  display: block;
+  margin: 0;
+  font-size: var(--hssf-fs-sm);
+  font-weight: var(--hssf-fw-regular);
+  color: var(--hssf-color-muted-2);
+  line-height: var(--hssf-lh-snug);
+}
+
+.hssf-flow__node--primary .hssf-flow__node-sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Edges between nodes ────────────────────────────────── */
+
+.hssf-flow__edge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-space-1);
+  flex-shrink: 0;
+  min-width: 2.5rem;
+  color: var(--hssf-color-primary);
+  user-select: none;
+}
+
+.hssf-flow--col .hssf-flow__edge {
+  flex-direction: column;
+  min-width: 0;
+  min-height: 2.5rem;
+  width: 100%;
+}
+
+.hssf-flow__edge--dashed .hssf-flow__line,
+.hssf-flow__edge--dashed.hssf-connector {
+  border-style: dashed;
+}
+
+.hssf-flow__edge--muted {
+  color: var(--hssf-color-muted);
+}
+
+.hssf-flow__edge--muted .hssf-flow__line {
+  border-color: var(--hssf-color-border);
+}
+
+.hssf-flow__line {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 1.25rem;
+  height: 0;
+  border-top: 2px solid currentColor;
+  box-sizing: border-box;
+}
+
+.hssf-flow--col .hssf-flow__line {
+  width: 0;
+  min-width: 0;
+  min-height: 1.25rem;
+  height: auto;
+  flex: 1 1 auto;
+  border-top: none;
+  border-left: 2px solid currentColor;
+}
+
+.hssf-flow__edge-label {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  border-radius: var(--hssf-radius-sm);
+  background: var(--hssf-color-soft);
+  color: var(--hssf-color-primary-deep);
+  font-size: var(--hssf-fs-xs);
+  font-weight: var(--hssf-fw-semibold);
+  line-height: 1.2;
+  white-space: nowrap;
+  max-width: 12ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hssf-flow__edge--labeled {
+  flex-direction: column;
+  gap: var(--hssf-space-1);
+  min-width: 4rem;
+}
+
+.hssf-flow__edge--labeled .hssf-flow__line {
+  width: 100%;
+  min-width: 3rem;
+}
+
+.hssf-flow--col .hssf-flow__edge--labeled {
+  flex-direction: row;
+  min-width: 0;
+}
+
+/* ── Standalone arrows (CSS chevrons) ───────────────────── */
+
+.hssf-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: var(--hssf-color-primary);
+  position: relative;
+  vertical-align: middle;
+}
+
+/* Chevron via borders */
+.hssf-arrow::before {
+  content: "";
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2.5px solid currentColor;
+  border-top: 2.5px solid currentColor;
+  box-sizing: border-box;
+}
+
+.hssf-arrow--right::before {
+  transform: rotate(45deg);
+}
+
+.hssf-arrow--down::before {
+  transform: rotate(135deg);
+}
+
+.hssf-arrow--left::before {
+  transform: rotate(-135deg);
+}
+
+.hssf-arrow--up::before {
+  transform: rotate(-45deg);
+}
+
+/* Double / bidirectional */
+.hssf-arrow--bidir {
+  width: 1.75rem;
+}
+
+.hssf-arrow--bidir::before {
+  transform: rotate(45deg);
+  margin-left: 0.35rem;
+}
+
+.hssf-arrow--bidir::after {
+  content: "";
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2.5px solid currentColor;
+  border-top: 2.5px solid currentColor;
+  box-sizing: border-box;
+  transform: rotate(-135deg);
+  margin-right: 0.35rem;
+  position: absolute;
+  left: 0.15rem;
+}
+
+.hssf-arrow--lg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.hssf-arrow--lg::before {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-width: 3px;
+}
+
+.hssf-arrow--muted {
+  color: var(--hssf-color-muted);
+}
+
+.hssf-arrow--white {
+  color: #ffffff;
+}
+
+/* Text-glyph fallback style (author may put → inside) */
+.hssf-arrow--glyph {
+  width: auto;
+  height: auto;
+  font-size: var(--hssf-fs-xl);
+  font-weight: var(--hssf-fw-bold);
+  line-height: 1;
+}
+
+.hssf-arrow--glyph::before,
+.hssf-arrow--glyph::after {
+  content: none;
+  display: none;
+}
+
+/* ── Connector primitives (custom layouts) ──────────────── */
+
+.hssf-connector {
+  display: block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-color: var(--hssf-color-primary);
+  color: var(--hssf-color-primary);
+  pointer-events: none;
+}
+
+.hssf-connector--h {
+  width: 100%;
+  min-width: 1.5rem;
+  height: 0;
+  border-top: 2px solid currentColor;
+}
+
+.hssf-connector--v {
+  width: 0;
+  min-height: 1.5rem;
+  height: 100%;
+  border-left: 2px solid currentColor;
+  align-self: stretch;
+}
+
+.hssf-connector--dashed {
+  border-style: dashed;
+}
+
+.hssf-connector--thick {
+  border-width: 3px;
+}
+
+.hssf-connector--muted {
+  color: var(--hssf-color-muted);
+  border-color: var(--hssf-color-border);
+}
+
+/* L elbow: horizontal then vertical stub (row layouts) */
+.hssf-connector--elbow {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+}
+
+.hssf-connector--elbow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 50%;
+  border-top: 2px solid currentColor;
+}
+
+.hssf-connector--elbow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 50%;
+  border-left: 2px solid currentColor;
+}
+
+/* Branch T (down from middle of horizontal) */
+.hssf-connector--tee {
+  position: relative;
+  width: 3rem;
+  height: 2rem;
+  border: none;
+}
+
+.hssf-connector--tee::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 2px solid currentColor;
+}
+
+.hssf-connector--tee::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 2px solid currentColor;
+}

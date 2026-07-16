@@ -11,6 +11,8 @@ Things agents and authors **must not** do in HSSF decks.
 | Nav/progress inside scaled stage | Nav/progress siblings of stage-wrap |
 | Multiple `.is-active` slides | Exactly one active; runtime manages it |
 | Manual `.is-visible` on fragments | Only `data-hssf-fragment`; runtime toggles |
+| Hand-rolled modal for glossary | `hssf-term` + runtime modal |
+| Absolute SVG only for simple A→B→C | Prefer `hssf-flow` + `hssf-arrow` |
 
 ## Styling
 
@@ -45,6 +47,7 @@ Things agents and authors **must not** do in HSSF decks.
 | ❌ Bad | ✅ Good |
 |--------|--------|
 | 15 fragments on one slide | 2–4 reveals |
+| Continuous `hssf-fx--spin` on whole slide | One small attention icon max |
 | Skip section dividers in long decks | Clear `section-block` rhythm |
 | End slide without brand-end | `hssf-brand-end` + light footer |
 | Wrong copyright line | Rikkei Academy - Rikkei Education string |

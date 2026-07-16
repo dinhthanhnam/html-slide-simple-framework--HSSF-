@@ -1,0 +1,117 @@
+/**
+ * HSSF motion / hover utilities (v0.2)
+ * Prefix: hssf-fx--*
+ * Apply on any block (icon-circle, card, node, term, …).
+ * Respects prefers-reduced-motion.
+ */
+
+/* ── Continuous attention (use sparingly) ───────────────── */
+
+.hssf-fx--pulse {
+  animation: hssf-fx-pulse 1.6s var(--hssf-ease) infinite;
+}
+
+.hssf-fx--spin {
+  animation: hssf-fx-spin 2.4s linear infinite;
+}
+
+.hssf-fx--spin-slow {
+  animation: hssf-fx-spin 4.5s linear infinite;
+}
+
+/* ── Hover-only ─────────────────────────────────────────── */
+
+.hssf-fx--hover-pulse {
+  transition: transform var(--hssf-duration) var(--hssf-ease),
+    box-shadow var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-fx--hover-pulse:hover,
+.hssf-fx--hover-pulse:focus-visible {
+  animation: hssf-fx-pulse 1s var(--hssf-ease) infinite;
+}
+
+.hssf-fx--hover-spin {
+  transition: transform var(--hssf-duration-slow) var(--hssf-ease);
+  transform-origin: center center;
+}
+
+.hssf-fx--hover-spin:hover,
+.hssf-fx--hover-spin:focus-visible {
+  animation: hssf-fx-spin 0.85s linear infinite;
+}
+
+.hssf-fx--hover-lift {
+  transition: transform var(--hssf-duration) var(--hssf-ease),
+    box-shadow var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-fx--hover-lift:hover,
+.hssf-fx--hover-lift:focus-visible {
+  transform: translateY(-0.25rem);
+  box-shadow: var(--hssf-shadow-card);
+}
+
+.hssf-fx--hover-scale {
+  transition: transform var(--hssf-duration) var(--hssf-ease);
+  transform-origin: center center;
+}
+
+.hssf-fx--hover-scale:hover,
+.hssf-fx--hover-scale:focus-visible {
+  transform: scale(1.06);
+}
+
+.hssf-fx--hover-glow {
+  transition: box-shadow var(--hssf-duration) var(--hssf-ease),
+    border-color var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-fx--hover-glow:hover,
+.hssf-fx--hover-glow:focus-visible {
+  box-shadow: 0 0 0 3px var(--hssf-color-soft-2),
+    0 0 18px rgba(190, 39, 39, 0.35);
+  border-color: var(--hssf-color-primary);
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+
+@keyframes hssf-fx-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(190, 39, 39, 0.35);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 0.55rem rgba(190, 39, 39, 0);
+  }
+}
+
+@keyframes hssf-fx-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hssf-fx--pulse,
+  .hssf-fx--spin,
+  .hssf-fx--spin-slow,
+  .hssf-fx--hover-pulse:hover,
+  .hssf-fx--hover-pulse:focus-visible,
+  .hssf-fx--hover-spin:hover,
+  .hssf-fx--hover-spin:focus-visible {
+    animation: none !important;
+  }
+
+  .hssf-fx--hover-lift:hover,
+  .hssf-fx--hover-lift:focus-visible,
+  .hssf-fx--hover-scale:hover,
+  .hssf-fx--hover-scale:focus-visible {
+    transform: none;
+  }
+}

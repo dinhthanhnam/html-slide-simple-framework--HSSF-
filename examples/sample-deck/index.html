@@ -192,31 +192,82 @@
                 <h2 class="hssf-header__title">Ba trạng thái trong Git</h2>
                 <p class="hssf-header__subtitle">Working · Staging · Repository</p>
               </header>
-              <div class="hssf-diagram">
-                <div class="hssf-diagram__frame">
-                  <div class="hssf-diagram__node">Working tree</div>
-                  <span class="hssf-diagram__arrow" aria-hidden="true">→</span>
-                  <div class="hssf-diagram__node">Staging</div>
-                  <span class="hssf-diagram__arrow" aria-hidden="true">→</span>
-                  <div class="hssf-diagram__node">Repository</div>
+              <div class="hssf-flow hssf-flow--row hssf-flow--loose">
+                <div class="hssf-flow__node hssf-fx--hover-lift">
+                  Working tree
+                  <span class="hssf-flow__node-sub">đang sửa</span>
                 </div>
-                <p class="hssf-diagram__caption">
-                  File đi qua staging trước khi thành commit
-                </p>
+                <span class="hssf-flow__edge hssf-flow__edge--labeled" aria-hidden="true">
+                  <span class="hssf-flow__edge-label">git add</span>
+                  <span class="hssf-flow__line"></span>
+                  <span class="hssf-arrow hssf-arrow--right"></span>
+                </span>
+                <div class="hssf-flow__node hssf-flow__node--primary hssf-fx--hover-glow">
+                  Staging
+                  <span class="hssf-flow__node-sub">index</span>
+                </div>
+                <span class="hssf-flow__edge hssf-flow__edge--labeled" aria-hidden="true">
+                  <span class="hssf-flow__edge-label">git commit</span>
+                  <span class="hssf-flow__line"></span>
+                  <span class="hssf-arrow hssf-arrow--right"></span>
+                </span>
+                <div class="hssf-flow__node hssf-fx--hover-lift">
+                  Repository
+                  <span class="hssf-flow__node-sub">lịch sử</span>
+                </div>
               </div>
-              <div class="hssf-defs deck-gap-md">
+              <p class="hssf-diagram__caption deck-gap-md">
+                Bấm thuật ngữ để xem định nghĩa nhanh
+              </p>
+              <div class="hssf-defs">
                 <div class="hssf-defs__row">
-                  <dt>Working tree</dt>
+                  <dt>
+                    <button
+                      type="button"
+                      class="hssf-term"
+                      data-hssf-term
+                      data-hssf-term-title="Working tree"
+                      data-hssf-term-body="Thư mục làm việc trên máy bạn — nơi file đang được chỉnh sửa."
+                    >
+                      Working tree
+                    </button>
+                  </dt>
                   <dd>Thư mục bạn đang sửa trên máy</dd>
                 </div>
                 <div class="hssf-defs__row">
-                  <dt>Staging (index)</dt>
+                  <dt>
+                    <button
+                      type="button"
+                      class="hssf-term hssf-term--chip"
+                      data-hssf-term
+                      data-hssf-term-title="Staging (index)"
+                      data-hssf-term-body="Vùng đệm: danh sách thay đổi đã chọn, sẵn sàng đưa vào commit tiếp theo."
+                    >
+                      Staging
+                    </button>
+                  </dt>
                   <dd>Danh sách thay đổi chuẩn bị commit</dd>
                 </div>
                 <div class="hssf-defs__row">
-                  <dt>Repository</dt>
+                  <dt>
+                    <button
+                      type="button"
+                      class="hssf-term"
+                      data-hssf-term="repo"
+                    >
+                      Repository
+                    </button>
+                  </dt>
                   <dd>Lịch sử commit (local / remote)</dd>
                 </div>
+              </div>
+              <div hidden data-hssf-term-def="repo">
+                <span data-hssf-term-def-title>Repository</span>
+                <p>
+                  Kho lưu lịch sử
+                  <code>commit</code>
+                  — có thể là repo local (máy bạn) hoặc remote (GitHub, GitLab…).
+                </p>
               </div>
             </div>
             <footer class="hssf-footer">

@@ -19,6 +19,9 @@ Runtime CSS/JS is versioned on npm — not a copy-source registry.
 | Content | [content.md](./content.md) | heading, list, callout, quote, table, code |
 | Teaching | [teaching.md](./teaching.md) | steps, timeline, compare, agenda, defs |
 | Visual | [visual.md](./visual.md) | icon-circle, icon-label, stat, accent, diagram |
+| Flow | [flow.md](./flow.md) | flow, arrow, connector |
+| Effects | [effects.md](./effects.md) | `hssf-fx--*` hover/pulse/spin |
+| Term | [term.md](./term.md) | glossary term + modal |
 | Media | [media.md](./media.md) | figure |
 | Fragments | [fragments.md](./fragments.md) | `data-hssf-fragment` |
 
@@ -58,10 +61,21 @@ hssf-icon-label __text
 hssf-stat __value __label
 hssf-accent --bar-left|--blob
 hssf-diagram __frame __node __arrow __caption
+hssf-flow --row|--col|--wrap|--tight|--loose
+hssf-flow__node --primary|--soft|--outline|--sm __node-sub
+hssf-flow__edge --dashed|--muted|--labeled __line __edge-label
+hssf-arrow --right|--down|--left|--up|--bidir|--lg|--muted|--white|--glyph
+hssf-connector --h|--v|--dashed|--thick|--muted|--elbow|--tee
+hssf-fx--pulse|--spin|--spin-slow
+hssf-fx--hover-pulse|--hover-spin|--hover-lift|--hover-scale|--hover-glow
+hssf-term --chip
+hssf-term-modal (runtime) __backdrop __dialog __close __kicker __title __body
 hssf-figure --border|--shadow|--contain __img __caption
 ```
 
-States: `.is-active` (slide), `.is-visible` (fragment — runtime only).
+States: `.is-active` (slide), `.is-visible` (fragment — runtime only), `.is-open` (term modal — runtime only).
+
+Data attrs (terms): `data-hssf-term`, `data-hssf-term-title`, `data-hssf-term-body`, `data-hssf-term-def`, `data-hssf-term-def-title`.
 
 ## Reference deck
 

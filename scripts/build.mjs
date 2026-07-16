@@ -33,6 +33,9 @@ const CSS_ORDER = [
   "components/teaching.css",
   "components/visual.css",
   "components/media.css",
+  "components/flow.css",
+  "components/effects.css",
+  "components/term.css",
   "print.css",
 ];
 

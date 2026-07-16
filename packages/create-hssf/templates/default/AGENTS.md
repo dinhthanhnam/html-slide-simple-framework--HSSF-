@@ -48,7 +48,18 @@ window.HSSF.init(document.querySelector("[data-hssf-canvas]"));
 
 ## Allowlist (public `hssf-*`)
 
-title-block, section-block, brand-end, header, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, figure, footer, nav, progress
+title-block, section-block, brand-end, header, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, **flow** (node/edge/line), **arrow**, **connector**, **fx** (`hssf-fx--hover-pulse|spin|lift|scale|glow`, `hssf-fx--pulse|spin|spin-slow`), **term** (+ modal runtime), figure, footer, nav, progress
+
+## Terms (glossary modal)
+
+```html
+<button type="button" class="hssf-term" data-hssf-term
+  data-hssf-term-title="Commit"
+  data-hssf-term-body="Snapshot tại một thời điểm.">commit</button>
+```
+
+Or rich HTML: `data-hssf-term="id"` + `<div hidden data-hssf-term-def="id">…</div>`.  
+Esc / backdrop closes. Do not invent modal markup — runtime injects it.
 
 ## Checklist
 
@@ -58,6 +69,7 @@ title-block, section-block, brand-end, header, columns, grid, card, heading, lis
 - [ ] No secrets in repo
 - [ ] No document scrollbars at 1280×720
 - [ ] Footer year correct
+- [ ] Terms use `<button type="button">` + `data-hssf-term`
 
 ## Snippets (copy-paste)
 
@@ -135,6 +147,19 @@ Pair with `hssf-slide--section` + `hssf-footer--light`:
     <span class="hssf-code__lang">bash</span>
   </div>
   <pre class="hssf-code__pre"><code class="hssf-code__code language-bash">git status</code></pre>
+</div>
+```
+
+### Flow + arrows
+
+```html
+<div class="hssf-flow hssf-flow--row">
+  <div class="hssf-flow__node hssf-fx--hover-lift">A</div>
+  <span class="hssf-flow__edge" aria-hidden="true">
+    <span class="hssf-flow__line"></span>
+    <span class="hssf-arrow hssf-arrow--right"></span>
+  </span>
+  <div class="hssf-flow__node hssf-flow__node--primary">B</div>
 </div>
 ```
 

@@ -1,0 +1,207 @@
+/**
+ * HSSF glossary terms + modal (v0.2)
+ *
+ * Author:
+ *   <button type="button" class="hssf-term" data-hssf-term
+ *     data-hssf-term-title="Commit"
+ *     data-hssf-term-body="…">commit</button>
+ *
+ *   Or rich HTML via:
+ *   <button class="hssf-term" data-hssf-term="id">…</button>
+ *   <div hidden data-hssf-term-def="id">…</div>
+ *
+ * Runtime injects .hssf-term-modal on the canvas.
+ */
+
+/* ── Inline term trigger ────────────────────────────────── */
+
+.hssf-term {
+  display: inline;
+  margin: 0;
+  padding: 0 0.05em;
+  border: none;
+  border-bottom: 2px dotted var(--hssf-color-primary);
+  border-radius: 0;
+  background: transparent;
+  color: var(--hssf-color-primary-deep);
+  font: inherit;
+  font-weight: var(--hssf-fw-semibold);
+  line-height: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none;
+  vertical-align: baseline;
+  transition: background-color var(--hssf-duration-fast) var(--hssf-ease),
+    border-color var(--hssf-duration-fast) var(--hssf-ease);
+}
+
+.hssf-term:hover,
+.hssf-term:focus-visible {
+  background: var(--hssf-color-soft);
+  border-bottom-style: solid;
+  outline: none;
+}
+
+.hssf-term:focus-visible {
+  box-shadow: 0 0 0 2px var(--hssf-color-soft-2);
+  border-radius: var(--hssf-radius-sm);
+}
+
+.hssf-term--chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.55em;
+  border: 1px solid var(--hssf-color-soft-2);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-radius: var(--hssf-radius-full);
+  background: var(--hssf-color-soft);
+  font-size: 0.95em;
+}
+
+.hssf-term--chip:hover,
+.hssf-term--chip:focus-visible {
+  border-color: var(--hssf-color-primary);
+  background: var(--hssf-color-soft-2);
+}
+
+/* ── Modal shell (viewport chrome — not scaled with stage) ─
+ * Modal is appended to [data-hssf-canvas] so it sits above stage.
+ */
+
+.hssf-term-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  box-sizing: border-box;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--hssf-duration) var(--hssf-ease),
+    visibility var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-term-modal.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hssf-term-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.55);
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.hssf-term-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(36rem, 92vw);
+  max-height: min(70vh, 32rem);
+  overflow: auto;
+  padding: var(--hssf-space-6);
+  border-radius: var(--hssf-radius-xl);
+  background: var(--hssf-color-bg);
+  color: var(--hssf-color-text);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.28);
+  box-sizing: border-box;
+  transform: translateY(0.5rem) scale(0.98);
+  transition: transform var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-term-modal.is-open .hssf-term-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+
+.hssf-term-modal__close {
+  position: absolute;
+  top: var(--hssf-space-3);
+  right: var(--hssf-space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: var(--hssf-radius-full);
+  background: var(--hssf-color-soft);
+  color: var(--hssf-color-primary-deep);
+  font-size: 1.35rem;
+  font-weight: var(--hssf-fw-bold);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hssf-term-modal__close:hover,
+.hssf-term-modal__close:focus-visible {
+  background: var(--hssf-color-soft-2);
+  outline: none;
+}
+
+.hssf-term-modal__kicker {
+  margin: 0 0 var(--hssf-space-2);
+  font-size: var(--hssf-fs-sm);
+  font-weight: var(--hssf-fw-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hssf-color-primary);
+}
+
+.hssf-term-modal__title {
+  margin: 0 0 var(--hssf-space-3);
+  padding-right: 2.5rem;
+  font-size: var(--hssf-fs-xl);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-tight);
+  color: var(--hssf-color-text-strong);
+  overflow-wrap: anywhere;
+}
+
+.hssf-term-modal__body {
+  margin: 0;
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text);
+}
+
+.hssf-term-modal__body p {
+  margin: 0 0 var(--hssf-space-3);
+}
+
+.hssf-term-modal__body p:last-child {
+  margin-bottom: 0;
+}
+
+.hssf-term-modal__body code {
+  font-family: var(--hssf-font-mono);
+  font-size: 0.92em;
+  padding: 0.05em 0.3em;
+  border-radius: var(--hssf-radius-sm);
+  background: var(--hssf-color-soft);
+  color: var(--hssf-color-primary-deep);
+}
+
+/* Ensure canvas can host absolute modal */
+.hssf-canvas {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hssf-term-modal,
+  .hssf-term-modal__dialog {
+    transition: none;
+  }
+
+  .hssf-term-modal.is-open .hssf-term-modal__dialog {
+    transform: none;
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@dinhthanhnam/create-hssf",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Scaffold a Rikkei Education HSSF HTML slide deck (hssf-slides)",
   "license": "MIT",
   "type": "module",

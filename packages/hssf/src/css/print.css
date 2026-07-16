@@ -36,7 +36,8 @@
 
   .hssf-progress,
   .hssf-nav,
-  .hssf-live {
+  .hssf-live,
+  .hssf-term-modal {
     display: none !important;
   }
 
