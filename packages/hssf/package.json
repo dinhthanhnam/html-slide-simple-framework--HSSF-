@@ -1,0 +1,57 @@
+{
+  "name": "hssf-slides",
+  "version": "0.1.1",
+  "description": "HTML Slide Simple Framework for Rikkei Education",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/hssf.esm.js",
+  "module": "./dist/hssf.esm.js",
+  "browser": "./dist/hssf.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/hssf.esm.js",
+      "default": "./dist/hssf.esm.js"
+    },
+    "./browser": "./dist/hssf.min.js",
+    "./hssf.css": "./dist/hssf.css",
+    "./hssf.min.css": "./dist/hssf.min.css",
+    "./hssf.min.js": "./dist/hssf.min.js",
+    "./hssf.esm.js": "./dist/hssf.esm.js",
+    "./hssf.esm.min.js": "./dist/hssf.esm.min.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "slides",
+    "presentation",
+    "html",
+    "rikkei",
+    "education",
+    "hssf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rikkei-education/hssf.git",
+    "directory": "packages/hssf"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.mjs",
+    "test": "node --test test/smoke.test.js test/tokens.test.js test/highlight.test.js test/scale.test.js test/navigation.test.js test/fragments.test.js test/layout.test.js test/content.test.js test/teaching-visual.test.js test/build-output.test.js test/sample-deck.test.js test/docs.test.js test/a11y.test.js"
+  },
+  "dependencies": {
+    "highlight.js": "11.11.1"
+  }
+}

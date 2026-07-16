@@ -1,0 +1,9 @@
+/**
+ * Deck-local styles only.
+ * Use .deck-* classes — do not invent public hssf-* names.
+ */
+
+.deck-spacer {
+  flex: 1 1 auto;
+  min-height: 0;
+}

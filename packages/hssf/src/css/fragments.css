@@ -1,0 +1,58 @@
+/**
+ * Fragment reveal styles (PR-05 / KD-5).
+ *
+ * Author: data-hssf-fragment [ = fade | highlight ]
+ * Runtime: toggles .is-visible only
+ *
+ * Hidden fragments use display:none (teaching default — list reflows).
+ * Print: all fragments forced visible (see print.css).
+ */
+
+/* Hidden until revealed */
+[data-hssf-fragment]:not(.is-visible) {
+  display: none !important;
+}
+
+/* Revealed */
+[data-hssf-fragment].is-visible {
+  display: revert;
+  opacity: 1;
+  visibility: visible;
+  animation: hssf-fragment-in var(--hssf-duration) var(--hssf-ease);
+}
+
+/* Default / fade — soft entrance (disabled under reduced motion) */
+[data-hssf-fragment="fade"].is-visible,
+[data-hssf-fragment=""].is-visible,
+[data-hssf-fragment].is-visible {
+  /* base animation above */
+}
+
+/* Highlight variant — brand emphasis when shown */
+[data-hssf-fragment="highlight"].is-visible {
+  outline: 2px solid var(--hssf-color-primary);
+  outline-offset: 4px;
+  border-radius: var(--hssf-radius-sm);
+  background-color: var(--hssf-color-soft);
+}
+
+@keyframes hssf-fragment-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-hssf-fragment].is-visible {
+    animation: none;
+  }
+
+  [data-hssf-fragment] {
+    transition: none;
+  }
+}

@@ -1,0 +1,382 @@
+/**
+ * HSSF layout blocks (PR-06)
+ * title-block, section-block, brand-end, header, columns, grid, card
+ * Geometry: C.0 / DESIGN.md
+ */
+
+/* ── Header (content slide chrome inside stage) ─────────── */
+
+.hssf-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--hssf-space-2);
+  margin: 0 0 var(--hssf-space-6);
+  position: relative;
+  padding-left: calc(var(--hssf-header-accent-w) + var(--hssf-space-4));
+  flex-shrink: 0;
+}
+
+.hssf-header__accent {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: var(--hssf-header-accent-w);
+  border-radius: var(--hssf-radius-full);
+  background: var(--hssf-color-primary);
+}
+
+.hssf-header__title {
+  margin: 0;
+  font-size: var(--hssf-fs-2xl);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-tight);
+  color: var(--hssf-color-text-strong);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  max-width: 100%;
+}
+
+.hssf-header__subtitle {
+  margin: 0;
+  font-size: var(--hssf-fs-md);
+  font-weight: var(--hssf-fw-medium);
+  color: var(--hssf-color-muted);
+  line-height: var(--hssf-lh-snug);
+}
+
+.hssf-slide--section .hssf-header__title,
+.hssf-slide--dark .hssf-header__title {
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-header__subtitle,
+.hssf-slide--dark .hssf-header__subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hssf-slide--section .hssf-header__accent,
+.hssf-slide--dark .hssf-header__accent {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Title block (title slide hero) ─────────────────────── */
+
+.hssf-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+  max-width: 56ch;
+  margin: auto 0;
+}
+
+.hssf-title-block--center {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48ch;
+}
+
+.hssf-title-block--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hssf-title-block__eyebrow {
+  margin: 0;
+  font-size: var(--hssf-fs-md);
+  font-weight: var(--hssf-fw-semibold);
+  color: var(--hssf-color-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hssf-title-block__title {
+  margin: 0;
+  font-size: var(--hssf-fs-hero);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-tight);
+  color: var(--hssf-color-text-strong);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  max-width: 100%;
+}
+
+.hssf-title-block__meta {
+  margin: 0;
+  font-size: var(--hssf-fs-base);
+  font-weight: var(--hssf-fw-medium);
+  color: var(--hssf-color-muted);
+  line-height: var(--hssf-lh-relaxed);
+}
+
+/* On dark/section title slides */
+.hssf-slide--section .hssf-title-block__title,
+.hssf-slide--dark .hssf-title-block__title {
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-title-block__eyebrow {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.hssf-slide--section .hssf-title-block__meta,
+.hssf-slide--dark .hssf-title-block__meta {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Section block (divider slide) ──────────────────────── */
+
+.hssf-section-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--hssf-space-4);
+  margin: auto 0;
+  max-width: 40ch;
+}
+
+.hssf-section-block__num {
+  display: block;
+  font-size: var(--hssf-fs-hero);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: 1;
+  color: #ffffff;
+  opacity: 0.95;
+  letter-spacing: -0.03em;
+}
+
+/* When used on light content slide (rare) */
+.hssf-slide--content .hssf-section-block__num,
+.hssf-slide--title .hssf-section-block__num {
+  color: var(--hssf-color-primary);
+}
+
+.hssf-section-block__title {
+  margin: 0;
+  font-size: var(--hssf-fs-2xl);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-snug);
+  color: #ffffff;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.hssf-slide--content .hssf-section-block__title,
+.hssf-slide--title .hssf-section-block__title {
+  color: var(--hssf-color-text-strong);
+}
+
+/* ── Brand end (closing academy slide) ──────────────────── */
+
+.hssf-brand-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--hssf-space-5);
+  margin: auto 0;
+  max-width: 52ch;
+  width: 100%;
+}
+
+.hssf-brand-end__logo {
+  display: block;
+  max-height: 96px;
+  max-width: 280px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: var(--hssf-space-2);
+}
+
+.hssf-brand-end__kicker {
+  margin: 0;
+  font-size: var(--hssf-fs-md);
+  font-weight: var(--hssf-fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hssf-brand-end__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.2vw, var(--hssf-fs-3xl));
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-snug);
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.hssf-brand-end__org {
+  margin: 0;
+  font-size: var(--hssf-fs-lg);
+  font-weight: var(--hssf-fw-semibold);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Brand-end on light slide (fallback) */
+.hssf-slide--content .hssf-brand-end__kicker {
+  color: var(--hssf-color-primary);
+}
+
+.hssf-slide--content .hssf-brand-end__title {
+  color: var(--hssf-color-text-strong);
+}
+
+.hssf-slide--content .hssf-brand-end__org {
+  color: var(--hssf-color-muted-2);
+}
+
+/* Typical brand-end slide uses section/dark + light footer */
+.hssf-slide--section .hssf-brand-end,
+.hssf-slide--dark .hssf-brand-end {
+  color: #ffffff;
+}
+
+/* ── Columns ────────────────────────────────────────────── */
+
+.hssf-columns {
+  display: grid;
+  gap: var(--hssf-space-6);
+  width: 100%;
+  min-height: 0;
+  align-items: stretch;
+  flex: 1 1 auto;
+}
+
+.hssf-columns--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.hssf-columns--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.hssf-columns--2-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.hssf-columns--1-2 {
+  grid-template-columns: 1fr 2fr;
+}
+
+.hssf-columns__col {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+}
+
+/* ── Grid ───────────────────────────────────────────────── */
+
+.hssf-grid {
+  display: grid;
+  gap: var(--hssf-space-5);
+  width: 100%;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.hssf-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hssf-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hssf-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+
+.hssf-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-3);
+  min-height: var(--hssf-card-min-h);
+  padding: var(--hssf-space-5);
+  border-radius: var(--hssf-radius-lg);
+  background: var(--hssf-color-bg);
+  border: 1px solid var(--hssf-color-border);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.hssf-card--soft {
+  background: var(--hssf-color-soft);
+  border-color: var(--hssf-color-soft-2);
+}
+
+.hssf-card--outline {
+  background: transparent;
+  border: 2px solid var(--hssf-color-primary);
+}
+
+.hssf-card--shadow {
+  box-shadow: var(--hssf-shadow-card);
+  border-color: transparent;
+}
+
+.hssf-card__icon {
+  flex-shrink: 0;
+  margin-bottom: var(--hssf-space-1);
+}
+
+.hssf-card__title {
+  margin: 0;
+  font-size: var(--hssf-fs-lg);
+  font-weight: var(--hssf-fw-bold);
+  line-height: var(--hssf-lh-snug);
+  color: var(--hssf-color-text-strong);
+}
+
+.hssf-card__body {
+  margin: 0;
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text);
+  flex: 1 1 auto;
+}
+
+.hssf-card__body p {
+  margin: 0 0 var(--hssf-space-2);
+}
+
+.hssf-card__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Cards on red section slides */
+.hssf-slide--section .hssf-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-card__title {
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-card__body {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Nav minimal (optional chrome mod) ──────────────────── */
+
+.hssf-nav--minimal {
+  background: transparent;
+  box-shadow: none;
+  padding: 0.35rem 0.5rem;
+}
+
+.hssf-nav--minimal .hssf-nav__btn {
+  background: rgba(255, 255, 255, 0.06);
+}

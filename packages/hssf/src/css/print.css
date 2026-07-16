@@ -1,0 +1,122 @@
+/**
+ * Print / PDF best-effort (PR-09)
+ * - One slide per page
+ * - All fragments revealed
+ * - Hide viewport chrome
+ * - Section/dark slides keep readable colors where possible
+ */
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 12mm;
+  }
+
+  html,
+  body,
+  .hssf-body {
+    overflow: visible !important;
+    height: auto !important;
+    width: auto !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .hssf-canvas {
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: block !important;
+    overflow: visible !important;
+    background: #fff !important;
+    position: static !important;
+  }
+
+  .hssf-progress,
+  .hssf-nav,
+  .hssf-live {
+    display: none !important;
+  }
+
+  .hssf-stage-wrap {
+    position: static !important;
+    overflow: visible !important;
+    flex: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .hssf-stage {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  .hssf-slide {
+    position: relative !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    height: auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .hssf-slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .hssf-slide.is-active,
+  .hssf-slide[aria-hidden="true"] {
+    visibility: visible !important;
+    display: flex !important;
+  }
+
+  .hssf-slide__inner {
+    overflow: visible !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* Reveal every fragment when printing */
+  [data-hssf-fragment],
+  [data-hssf-fragment]:not(.is-visible),
+  [data-hssf-fragment].is-visible {
+    display: revert !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    outline: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* Code blocks: avoid cut-off */
+  .hssf-code,
+  .hssf-code__pre,
+  .hssf-code pre {
+    max-height: none !important;
+    overflow: visible !important;
+    break-inside: avoid;
+  }
+
+  .hssf-nav__btn:focus-visible,
+  .hssf-canvas:focus-visible {
+    outline: none !important;
+  }
+}

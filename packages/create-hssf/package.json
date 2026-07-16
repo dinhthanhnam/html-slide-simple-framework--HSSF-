@@ -1,0 +1,41 @@
+{
+  "name": "@dinhthanhnam/create-hssf",
+  "version": "0.1.2",
+  "description": "Scaffold a Rikkei Education HSSF HTML slide deck (hssf-slides)",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-hssf": "./bin/create-hssf.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "hssf-slides": "workspace:*"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "hssf",
+    "create",
+    "scaffold",
+    "slides",
+    "rikkei"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rikkei-education/hssf.git",
+    "directory": "packages/create-hssf"
+  },
+  "scripts": {
+    "start": "node bin/create-hssf.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

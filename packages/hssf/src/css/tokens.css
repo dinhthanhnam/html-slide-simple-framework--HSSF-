@@ -1,0 +1,135 @@
+/**
+ * HSSF design tokens — Rikkei Education
+ * Curated subset from reference deck: (Slide) Session 4.pptx
+ * See: /reference/session-4-notes.md
+ *
+ * Palette is intentional subset, not exhaustive map of every PPTX color.
+ */
+
+:root {
+  /* ── Brand reds ───────────────────────────────────────── */
+  --hssf-color-primary: #be2727;
+  --hssf-color-primary-deep: #991b1b;
+  --hssf-color-primary-darker: #9a0000;
+  --hssf-color-primary-deepest: #7f1d1d;
+  --hssf-color-primary-ink: #450a0a;
+  --hssf-color-soft: #fef2f2;
+  --hssf-color-soft-2: #fee2e2;
+
+  /* ── Surfaces & text ──────────────────────────────────── */
+  --hssf-color-bg: #ffffff;
+  --hssf-color-text: #333333;
+  --hssf-color-text-strong: #1e293b;
+  --hssf-color-text-slate: #334155;
+  --hssf-color-muted: #7f848e;
+  --hssf-color-muted-2: #475569;
+  --hssf-color-border: #e2e8f0;
+  --hssf-color-viewport: #111111; /* letterbox outside stage */
+
+  /* ── Code chrome (matches highlight.js Atom One Dark) ───
+   * Syntax colors come from official atom-one-dark.css, not these vars.
+   * Tokens below only for .hssf-code shell / header chrome.
+   * Source: highlight.js/styles/atom-one-dark.css (base #282c34, mono-1 #abb2bf)
+   */
+  --hssf-code-bg: #282c34;
+  --hssf-code-bg-alt: #21252b;
+  --hssf-code-fg: #abb2bf;
+
+  /* ── Semantic (teaching callouts) ─────────────────────── */
+  --hssf-color-success: #38761d;
+  --hssf-color-success-soft: #e8f5e9;
+  --hssf-color-info: #0c4a6e;
+  --hssf-color-info-soft: #e0f2fe;
+  --hssf-color-warning: #b45309;
+  --hssf-color-warning-soft: #fef3c7;
+  --hssf-color-danger: #be2727;
+  --hssf-color-danger-soft: #fef2f2;
+
+  /* ── Typography ───────────────────────────────────────── */
+  --hssf-font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hssf-font-mono: "Courier New", Courier, ui-monospace, monospace;
+
+  --hssf-fw-regular: 400;
+  --hssf-fw-medium: 500;
+  --hssf-fw-semibold: 600;
+  --hssf-fw-bold: 700;
+  --hssf-fw-extrabold: 800;
+
+  /* Root font-size on .hssf-stage (rem scale under transform) */
+  --hssf-stage-font-size: 16px;
+
+  --hssf-fs-xs: 0.75rem; /* 12px */
+  --hssf-fs-sm: 0.875rem; /* 14px */
+  --hssf-fs-base: 1.125rem; /* 18px — readable body on projector */
+  --hssf-fs-md: 1.25rem; /* 20px */
+  --hssf-fs-lg: 1.5rem; /* 24px */
+  --hssf-fs-xl: 1.875rem; /* 30px */
+  --hssf-fs-2xl: 2.25rem; /* 36px */
+  --hssf-fs-3xl: 3rem; /* 48px */
+  --hssf-fs-4xl: 3.75rem; /* 60px */
+  --hssf-fs-hero: 4.5rem; /* 72px — section numbers */
+
+  --hssf-lh-tight: 1.2;
+  --hssf-lh-snug: 1.35;
+  --hssf-lh-normal: 1.5;
+  --hssf-lh-relaxed: 1.65;
+
+  /* ── Spacing scale ────────────────────────────────────── */
+  --hssf-space-1: 0.25rem;
+  --hssf-space-2: 0.5rem;
+  --hssf-space-3: 0.75rem;
+  --hssf-space-4: 1rem;
+  --hssf-space-5: 1.5rem;
+  --hssf-space-6: 2rem;
+  --hssf-space-8: 3rem;
+  --hssf-space-10: 4rem;
+
+  /* ── Radii & shadows ──────────────────────────────────── */
+  --hssf-radius-sm: 0.375rem;
+  --hssf-radius-md: 0.5rem;
+  --hssf-radius-lg: 0.75rem;
+  --hssf-radius-xl: 1rem;
+  --hssf-radius-full: 9999px;
+
+  --hssf-shadow-card: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --hssf-shadow-soft: 0 2px 8px rgba(190, 39, 39, 0.08);
+  --hssf-shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.25);
+
+  /* ── Slide geometry (16:9 logical stage) ──────────────── */
+  --hssf-slide-w: 1920px;
+  --hssf-slide-h: 1080px;
+  --hssf-slide-padding-x: 72px;
+  --hssf-slide-padding-y: 56px;
+  --hssf-footer-h: 48px;
+  --hssf-header-accent-w: 6px;
+  --hssf-code-header-h: 40px;
+  --hssf-card-min-h: 160px;
+  --hssf-icon-sm: 40px;
+  --hssf-icon-md: 56px;
+  --hssf-icon-lg: 72px;
+  --hssf-steps-gap: var(--hssf-space-5);
+  --hssf-diagram-node-min-w: 140px;
+  --hssf-timeline-dot: 12px;
+  --hssf-figure-max-h: 520px;
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --hssf-duration-fast: 150ms;
+  --hssf-duration: 250ms;
+  --hssf-duration-slow: 400ms;
+  --hssf-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Chrome (viewport, not scaled) ────────────────────── */
+  --hssf-progress-h: 4px;
+  --hssf-nav-gap: 0.5rem;
+  /* ≥44px hit target for projector / touch (WCAG-ish) */
+  --hssf-nav-btn-size: 2.75rem;
+  --hssf-nav-min-height: 3.25rem;
+  --hssf-nav-bg: rgba(17, 17, 17, 0.72);
+  --hssf-nav-fg: #ffffff;
+
+  /* ── Footer default copy template (author injects year) ─ */
+  --hssf-footer-copy: "By Rikkei Academy - Rikkei Education - All rights reserved.";
+
+  /* ── Meta ─────────────────────────────────────────────── */
+  --hssf-version: "0.1.1";
+}

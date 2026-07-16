@@ -1,0 +1,366 @@
+/**
+ * HSSF content blocks (PR-07)
+ * heading, list, callout, quote, table, code (+ highlight.js)
+ */
+
+/* ── Heading (in-slide content heading, not chrome header) ─ */
+
+.hssf-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-2);
+  margin: 0 0 var(--hssf-space-5);
+  flex-shrink: 0;
+}
+
+.hssf-heading__kicker {
+  margin: 0;
+  font-size: var(--hssf-fs-sm);
+  font-weight: var(--hssf-fw-semibold);
+  color: var(--hssf-color-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hssf-heading__title {
+  margin: 0;
+  font-size: var(--hssf-fs-xl);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-tight);
+  color: var(--hssf-color-text-strong);
+}
+
+.hssf-slide--section .hssf-heading__kicker {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hssf-slide--section .hssf-heading__title {
+  color: #ffffff;
+}
+
+/* ── List ───────────────────────────────────────────────── */
+
+.hssf-list {
+  margin: 0 0 var(--hssf-space-4);
+  padding-left: 1.35em;
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text);
+}
+
+.hssf-list > li {
+  margin: 0;
+  padding-left: 0.25em;
+}
+
+.hssf-list > li + li {
+  margin-top: var(--hssf-space-3);
+}
+
+/* Disc default; marker color primary */
+.hssf-list:not(.hssf-list--numbered) {
+  list-style: disc;
+}
+
+.hssf-list:not(.hssf-list--numbered) > li::marker {
+  color: var(--hssf-color-primary);
+}
+
+.hssf-list--numbered {
+  list-style: decimal;
+  padding-left: 1.5em;
+}
+
+.hssf-list--numbered > li::marker {
+  color: var(--hssf-color-primary);
+  font-weight: var(--hssf-fw-bold);
+}
+
+/* Nested / secondary list */
+.hssf-list--sub,
+.hssf-list .hssf-list {
+  margin-top: var(--hssf-space-2);
+  margin-bottom: 0;
+  font-size: var(--hssf-fs-md);
+  color: var(--hssf-color-text-slate);
+}
+
+.hssf-list--sub {
+  list-style: circle;
+  padding-left: 1.25em;
+}
+
+.hssf-list--sub > li::marker {
+  color: var(--hssf-color-muted);
+}
+
+.hssf-slide--section .hssf-list,
+.hssf-slide--dark .hssf-list {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hssf-slide--section .hssf-list > li::marker,
+.hssf-slide--dark .hssf-list > li::marker {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Callout ────────────────────────────────────────────── */
+
+.hssf-callout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-2);
+  padding: var(--hssf-space-4) var(--hssf-space-5);
+  margin: 0 0 var(--hssf-space-4);
+  border-radius: var(--hssf-radius-md);
+  border-left: 4px solid var(--hssf-color-primary);
+  background: var(--hssf-color-soft);
+  box-sizing: border-box;
+}
+
+.hssf-callout__label {
+  margin: 0;
+  font-size: var(--hssf-fs-sm);
+  font-weight: var(--hssf-fw-bold);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--hssf-color-primary-deep);
+}
+
+.hssf-callout__body {
+  margin: 0;
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text);
+}
+
+.hssf-callout__body p {
+  margin: 0 0 var(--hssf-space-2);
+}
+
+.hssf-callout__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Semantic variants */
+.hssf-callout--info {
+  border-left-color: var(--hssf-color-info);
+  background: var(--hssf-color-info-soft);
+}
+
+.hssf-callout--info .hssf-callout__label {
+  color: var(--hssf-color-info);
+}
+
+.hssf-callout--success {
+  border-left-color: var(--hssf-color-success);
+  background: var(--hssf-color-success-soft);
+}
+
+.hssf-callout--success .hssf-callout__label {
+  color: var(--hssf-color-success);
+}
+
+.hssf-callout--warning {
+  border-left-color: var(--hssf-color-warning);
+  background: var(--hssf-color-warning-soft);
+}
+
+.hssf-callout--warning .hssf-callout__label {
+  color: var(--hssf-color-warning);
+}
+
+.hssf-callout--danger {
+  border-left-color: var(--hssf-color-danger);
+  background: var(--hssf-color-danger-soft);
+}
+
+.hssf-callout--danger .hssf-callout__label {
+  color: var(--hssf-color-danger);
+}
+
+.hssf-callout--tip {
+  border-left-color: var(--hssf-color-primary);
+  background: var(--hssf-color-soft);
+}
+
+.hssf-callout--tip .hssf-callout__label {
+  color: var(--hssf-color-primary-deep);
+}
+
+/* Default without modifier ≈ tip/primary soft */
+.hssf-callout:not([class*="hssf-callout--"]) {
+  border-left-color: var(--hssf-color-primary);
+  background: var(--hssf-color-soft);
+}
+
+/* ── Quote ──────────────────────────────────────────────── */
+
+.hssf-quote {
+  margin: 0 0 var(--hssf-space-5);
+  padding: var(--hssf-space-5) var(--hssf-space-6);
+  border-left: 4px solid var(--hssf-color-primary);
+  background: var(--hssf-color-soft);
+  border-radius: 0 var(--hssf-radius-md) var(--hssf-radius-md) 0;
+  font-size: var(--hssf-fs-lg);
+  font-weight: var(--hssf-fw-medium);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text-strong);
+  font-style: italic;
+}
+
+.hssf-quote > p {
+  margin: 0 0 var(--hssf-space-3);
+  font-style: italic;
+}
+
+.hssf-quote > p:last-child {
+  margin-bottom: 0;
+}
+
+.hssf-quote__cite {
+  display: block;
+  margin-top: var(--hssf-space-3);
+  font-size: var(--hssf-fs-sm);
+  font-weight: var(--hssf-fw-semibold);
+  font-style: normal;
+  color: var(--hssf-color-muted-2);
+}
+
+.hssf-quote__cite::before {
+  content: "— ";
+}
+
+/* ── Table ──────────────────────────────────────────────── */
+
+.hssf-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 var(--hssf-space-4);
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-snug);
+  color: var(--hssf-color-text);
+  background: var(--hssf-color-bg);
+}
+
+.hssf-table th,
+.hssf-table td {
+  padding: var(--hssf-space-3) var(--hssf-space-4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hssf-color-border);
+}
+
+.hssf-table th {
+  font-weight: var(--hssf-fw-bold);
+  color: var(--hssf-color-text-strong);
+  background: var(--hssf-color-soft);
+  border-bottom: 2px solid var(--hssf-color-primary);
+  font-size: var(--hssf-fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.hssf-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.hssf-table--striped tbody tr:nth-child(even) {
+  background: var(--hssf-color-soft);
+}
+
+.hssf-table--compact th,
+.hssf-table--compact td {
+  padding: var(--hssf-space-2) var(--hssf-space-3);
+  font-size: var(--hssf-fs-sm);
+}
+
+/* Scroll wrapper optional: parent overflow */
+.hssf-slide__inner > .hssf-table,
+.hssf-columns__col > .hssf-table {
+  display: table;
+}
+
+/* ── Code block (highlight.js + Atom One Dark) ──────────── */
+
+.hssf-code {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--hssf-radius-lg);
+  overflow: hidden;
+  background: var(--hssf-code-bg);
+  box-shadow: var(--hssf-shadow-card);
+  max-width: 100%;
+  margin: 0 0 var(--hssf-space-4);
+  min-height: 0;
+  flex-shrink: 1;
+}
+
+.hssf-code__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hssf-space-3);
+  min-height: var(--hssf-code-header-h);
+  padding: 0 var(--hssf-space-4);
+  font-family: var(--hssf-font-mono);
+  font-size: var(--hssf-fs-sm);
+  color: var(--hssf-code-fg);
+  background: var(--hssf-code-bg-alt);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.hssf-code__filename {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  color: var(--hssf-code-fg);
+}
+
+.hssf-code__lang {
+  flex-shrink: 0;
+  font-size: var(--hssf-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(171, 178, 191, 0.65);
+}
+
+.hssf-code__pre,
+.hssf-code pre {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  max-height: 28rem; /* ~ authoring max ~18 lines soft limit */
+  background: transparent;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.hssf-code__code,
+.hssf-code pre code,
+.hssf-code code.hljs,
+.hssf-slide pre code.hljs {
+  font-family: var(--hssf-font-mono);
+  font-size: var(--hssf-fs-sm);
+  line-height: var(--hssf-lh-relaxed);
+  tab-size: 2;
+  display: block;
+  padding: var(--hssf-space-4) !important; /* beat atom-one-dark pre code padding */
+  background: transparent !important;
+}
+
+/* Header as plain text node still OK */
+.hssf-code__header:not(:has(.hssf-code__filename)) {
+  /* simple single-line filename in header textContent */
+}
+
+/* Standalone pre without .hssf-code chrome */
+.hssf-slide > pre,
+.hssf-slide__inner > pre:not(.hssf-code__pre) {
+  margin: 0 0 var(--hssf-space-4);
+  border-radius: var(--hssf-radius-lg);
+  overflow: auto;
+  background: var(--hssf-code-bg);
+}

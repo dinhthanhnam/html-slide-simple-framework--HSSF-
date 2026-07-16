@@ -1,0 +1,264 @@
+/**
+ * HSSF chrome / shell — canvas, stage, slides, footer, nav, progress.
+ * Scale model: absolute-centered stage + JS transform (see scale.js).
+ * Nav & progress live OUTSIDE the scaled stage (KD-18).
+ */
+
+/* ── Canvas (viewport chrome host) ──────────────────────── */
+
+.hssf-canvas {
+  box-sizing: border-box;
+  width: 100%;
+  width: 100vw;
+  /* Safari / mobile browser chrome: prefer dynamic viewport */
+  height: 100vh;
+  height: 100dvh;
+  max-width: 100%;
+  max-height: 100%;
+  max-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  background: var(--hssf-color-viewport);
+  color: var(--hssf-color-text);
+  font-family: var(--hssf-font-sans);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+/* Allow selecting text inside slide content when presenting notes / copying */
+.hssf-slide__inner,
+.hssf-slide__inner * {
+  user-select: text;
+}
+
+/* ── Progress bar (viewport chrome, not scaled) ─────────── */
+
+.hssf-progress {
+  flex: 0 0 auto;
+  height: var(--hssf-progress-h);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 20;
+  overflow: hidden;
+}
+
+.hssf-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--hssf-color-primary);
+  transition: width var(--hssf-duration) var(--hssf-ease);
+  will-change: width;
+}
+
+/* ── Stage host ─────────────────────────────────────────── */
+
+.hssf-stage-wrap {
+  flex: 1 1 auto;
+  min-width: 0; /* critical: override flex min-width:auto */
+  min-height: 0; /* critical: override flex min-height:auto */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Logical 1920×1080 surface — out of flow so ancestors never size to 1920×1080 */
+.hssf-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--hssf-slide-w);
+  height: var(--hssf-slide-h);
+  margin: 0;
+  font-size: var(--hssf-stage-font-size);
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  /* never use CSS zoom */
+  background: var(--hssf-color-bg);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ── Slides (absolute stack) ────────────────────────────── */
+
+.hssf-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--hssf-color-bg);
+  color: var(--hssf-color-text);
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hssf-slide.is-active {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.hssf-slide[aria-hidden="true"] {
+  /* keep in sync with visibility for a11y */
+}
+
+/* Variants */
+.hssf-slide--title {
+  background: var(--hssf-color-bg);
+}
+
+.hssf-slide--section {
+  background: var(--hssf-color-primary-deep);
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-slide__inner,
+.hssf-slide--section h1,
+.hssf-slide--section h2,
+.hssf-slide--section h3,
+.hssf-slide--section p {
+  color: #ffffff;
+}
+
+.hssf-slide--dark {
+  background: var(--hssf-color-text-strong);
+  color: #ffffff;
+}
+
+.hssf-slide--content {
+  background: var(--hssf-color-bg);
+}
+
+.hssf-slide__inner {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  padding: var(--hssf-slide-padding-y) var(--hssf-slide-padding-x);
+  padding-bottom: calc(var(--hssf-slide-padding-y) * 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Footer (inside stage / slide) ──────────────────────── */
+
+.hssf-footer {
+  height: var(--hssf-footer-h);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hssf-space-4);
+  padding: 0 var(--hssf-slide-padding-x);
+  font-size: var(--hssf-fs-xs);
+  color: var(--hssf-color-muted);
+  background: transparent;
+  border-top: 1px solid var(--hssf-color-border);
+  box-sizing: border-box;
+}
+
+.hssf-footer__copy {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.hssf-footer__page {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--hssf-color-muted-2);
+}
+
+/* Light footer on red/dark slides */
+.hssf-footer--light {
+  color: rgba(255, 255, 255, 0.85);
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.hssf-footer--light .hssf-footer__page {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hssf-footer--nopage .hssf-footer__page {
+  display: none;
+}
+
+/* ── Navigation (viewport chrome, not scaled) ───────────── */
+
+.hssf-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-nav-gap);
+  padding: 0.5rem 0.75rem;
+  /* Safe area for notched / projector bottom bars */
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+  min-height: var(--hssf-nav-min-height);
+  background: var(--hssf-nav-bg);
+  color: var(--hssf-nav-fg);
+  z-index: 20;
+  box-shadow: var(--hssf-shadow-nav);
+}
+
+.hssf-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hssf-nav-btn-size);
+  height: var(--hssf-nav-btn-size);
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--hssf-radius-md);
+  color: var(--hssf-nav-fg);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: background var(--hssf-duration-fast) var(--hssf-ease);
+  /* Easier click when projected / touch */
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.hssf-nav__btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hssf-nav__btn:active {
+  background: rgba(190, 39, 39, 0.55);
+}
+
+.hssf-nav__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.hssf-nav__counter {
+  min-width: 4.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.9);
+  user-select: none;
+}
+
+/* ── Live region (sr-only already in base) ──────────────── */
+
+.hssf-live {
+  /* visual hide via .hssf-sr-only */
+}
+
+/* Print rules live in print.css (PR-05+) */

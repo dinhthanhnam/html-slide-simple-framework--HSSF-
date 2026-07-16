@@ -1,0 +1,27 @@
+{
+  "name": "hssf-monorepo",
+  "private": true,
+  "version": "0.1.1",
+  "description": "HTML Slide Simple Framework for Rikkei Education — monorepo",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test packages/hssf/test/smoke.test.js packages/hssf/test/tokens.test.js packages/hssf/test/highlight.test.js packages/hssf/test/scale.test.js packages/hssf/test/navigation.test.js packages/hssf/test/fragments.test.js packages/hssf/test/layout.test.js packages/hssf/test/content.test.js packages/hssf/test/teaching-visual.test.js packages/hssf/test/build-output.test.js packages/hssf/test/sample-deck.test.js packages/hssf/test/docs.test.js packages/hssf/test/a11y.test.js packages/create-hssf/test/cli.test.js",
+    "test:e2e": "playwright test",
+    "smoke": "pnpm run build && npx --yes serve . -l 5173",
+    "sample": "pnpm run build && npx --yes serve . -l 5180",
+    "create-hssf": "node packages/create-hssf/bin/create-hssf.js",
+    "size": "node scripts/size-check.mjs",
+    "ci": "pnpm run build && pnpm run test && pnpm run size && pnpm run test:e2e",
+    "publish:release": "pnpm run build && node scripts/publish.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "esbuild": "^0.25.0"
+  }
+}

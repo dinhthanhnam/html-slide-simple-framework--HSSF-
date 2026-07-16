@@ -1,0 +1,210 @@
+/**
+ * HSSF visual / shape blocks (PR-08)
+ * icon-circle, icon-label, stat, accent, diagram
+ * No Material Icons / icon fonts — text or author SVG/emoji only.
+ */
+
+/* ── Icon circle ────────────────────────────────────────── */
+
+.hssf-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hssf-icon-md);
+  height: var(--hssf-icon-md);
+  border-radius: var(--hssf-radius-full);
+  background: var(--hssf-color-primary);
+  color: #ffffff;
+  font-size: var(--hssf-fs-lg);
+  font-weight: var(--hssf-fw-bold);
+  line-height: 1;
+  flex-shrink: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hssf-icon-circle--sm {
+  width: var(--hssf-icon-sm);
+  height: var(--hssf-icon-sm);
+  font-size: var(--hssf-fs-sm);
+}
+
+.hssf-icon-circle--md {
+  width: var(--hssf-icon-md);
+  height: var(--hssf-icon-md);
+  font-size: var(--hssf-fs-lg);
+}
+
+.hssf-icon-circle--lg {
+  width: var(--hssf-icon-lg);
+  height: var(--hssf-icon-lg);
+  font-size: var(--hssf-fs-xl);
+}
+
+.hssf-icon-circle--primary {
+  background: var(--hssf-color-primary);
+  color: #ffffff;
+}
+
+.hssf-icon-circle--soft {
+  background: var(--hssf-color-soft);
+  color: var(--hssf-color-primary-deep);
+  border: 1px solid var(--hssf-color-soft-2);
+}
+
+/* ── Icon + label row ───────────────────────────────────── */
+
+.hssf-icon-label {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--hssf-space-3);
+  min-width: 0;
+}
+
+.hssf-icon-label__text {
+  font-size: var(--hssf-fs-base);
+  font-weight: var(--hssf-fw-semibold);
+  color: var(--hssf-color-text-strong);
+  line-height: var(--hssf-lh-snug);
+}
+
+/* ── Stat callout ───────────────────────────────────────── */
+
+.hssf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-2);
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.hssf-stat__value {
+  margin: 0;
+  font-size: var(--hssf-fs-4xl);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: 1;
+  color: var(--hssf-color-primary);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hssf-stat__label {
+  margin: 0;
+  font-size: var(--hssf-fs-md);
+  font-weight: var(--hssf-fw-medium);
+  color: var(--hssf-color-muted-2);
+  line-height: var(--hssf-lh-snug);
+}
+
+.hssf-slide--section .hssf-stat__value {
+  color: #ffffff;
+}
+
+.hssf-slide--section .hssf-stat__label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Accent shapes ──────────────────────────────────────── */
+
+.hssf-accent {
+  display: block;
+  pointer-events: none;
+}
+
+/* Left bar accent on a block (use as wrapper or sibling) */
+.hssf-accent--bar-left {
+  position: relative;
+  padding-left: calc(var(--hssf-header-accent-w) + var(--hssf-space-4));
+}
+
+.hssf-accent--bar-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: var(--hssf-header-accent-w);
+  border-radius: var(--hssf-radius-full);
+  background: var(--hssf-color-primary);
+}
+
+/* Soft decorative blob (absolute-friendly decoration) */
+.hssf-accent--blob {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 40% 60% 55% 45%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--hssf-color-soft-2),
+    var(--hssf-color-soft) 60%,
+    transparent 70%
+  );
+  opacity: 0.9;
+}
+
+/* ── Diagram placeholder ────────────────────────────────── */
+
+.hssf-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+  width: 100%;
+  min-height: 0;
+  align-items: center;
+}
+
+.hssf-diagram__frame {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-space-4);
+  width: 100%;
+  padding: var(--hssf-space-5);
+  border-radius: var(--hssf-radius-lg);
+  border: 1px dashed var(--hssf-color-soft-2);
+  background: var(--hssf-color-soft);
+  box-sizing: border-box;
+  min-height: 12rem;
+}
+
+.hssf-diagram__node {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hssf-space-2);
+  min-width: var(--hssf-diagram-node-min-w);
+  padding: var(--hssf-space-4);
+  border-radius: var(--hssf-radius-md);
+  border: 1px solid var(--hssf-color-soft-2);
+  background: var(--hssf-color-bg);
+  font-size: var(--hssf-fs-base);
+  font-weight: var(--hssf-fw-semibold);
+  color: var(--hssf-color-text-strong);
+  text-align: center;
+  box-shadow: var(--hssf-shadow-soft);
+  box-sizing: border-box;
+}
+
+.hssf-diagram__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hssf-color-primary);
+  font-size: var(--hssf-fs-xl);
+  font-weight: var(--hssf-fw-bold);
+  line-height: 1;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.hssf-diagram__caption {
+  margin: 0;
+  font-size: var(--hssf-fs-sm);
+  color: var(--hssf-color-muted);
+  text-align: center;
+  max-width: 40ch;
+}

@@ -1,0 +1,51 @@
+/**
+ * HSSF media (PR-08)
+ * figure + img + caption
+ */
+
+.hssf-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hssf-space-3);
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hssf-figure__img,
+.hssf-figure img {
+  display: block;
+  max-width: 100%;
+  max-height: var(--hssf-figure-max-h);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--hssf-radius-md);
+}
+
+.hssf-figure--contain .hssf-figure__img,
+.hssf-figure--contain img {
+  object-fit: contain;
+  width: 100%;
+  max-height: var(--hssf-figure-max-h);
+}
+
+.hssf-figure--border .hssf-figure__img,
+.hssf-figure--border img {
+  border: 1px solid var(--hssf-color-border);
+}
+
+.hssf-figure--shadow .hssf-figure__img,
+.hssf-figure--shadow img {
+  box-shadow: var(--hssf-shadow-card);
+}
+
+.hssf-figure__caption {
+  margin: 0;
+  font-size: var(--hssf-fs-sm);
+  color: var(--hssf-color-muted);
+  text-align: center;
+  line-height: var(--hssf-lh-snug);
+  max-width: 48ch;
+}

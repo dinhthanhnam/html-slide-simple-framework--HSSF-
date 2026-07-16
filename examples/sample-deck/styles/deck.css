@@ -1,0 +1,51 @@
+/**
+ * Deck-local overrides only (.deck-*).
+ * Do not invent public hssf-* classes here.
+ */
+
+.deck-fill {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.deck-gap-sm {
+  margin-top: var(--hssf-space-4);
+}
+
+.deck-gap-md {
+  margin-top: var(--hssf-space-6);
+}
+
+.deck-row-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hssf-space-5);
+  margin-top: var(--hssf-space-5);
+  justify-content: center;
+}
+
+.deck-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hssf-space-8);
+  margin-top: var(--hssf-space-6);
+  justify-content: flex-start;
+}
+
+.deck-figure-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.deck-title-with-accent {
+  position: relative;
+  width: 100%;
+  max-width: 48ch;
+  margin: auto;
+}

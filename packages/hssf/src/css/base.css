@@ -1,0 +1,285 @@
+/**
+ * HSSF base styles — reset, body, typography helpers, a11y, code tokens.
+ * Canvas / stage shell geometry lands in chrome.css (PR-03).
+ */
+
+/* ── Reset ──────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body.hssf-body,
+.hssf-body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--hssf-color-viewport);
+  color: var(--hssf-color-text);
+  font-family: var(--hssf-font-sans);
+  font-weight: var(--hssf-fw-regular);
+  font-size: var(--hssf-stage-font-size);
+  line-height: var(--hssf-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Vietnamese / long words */
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+html:has(body.hssf-body),
+html:has(.hssf-body) {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Media defaults ─────────────────────────────────────── */
+
+.hssf-stage img,
+.hssf-slide img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hssf-stage svg {
+  display: block;
+}
+
+/* ── Text element defaults inside slides ────────────────── */
+
+.hssf-slide h1,
+.hssf-slide h2,
+.hssf-slide h3,
+.hssf-slide h4 {
+  margin: 0 0 var(--hssf-space-4);
+  color: var(--hssf-color-text-strong);
+  font-weight: var(--hssf-fw-extrabold);
+  line-height: var(--hssf-lh-tight);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.hssf-slide h1 {
+  font-size: var(--hssf-fs-3xl);
+  font-weight: var(--hssf-fw-extrabold);
+}
+
+.hssf-slide h2 {
+  font-size: var(--hssf-fs-2xl);
+}
+
+.hssf-slide h3 {
+  font-size: var(--hssf-fs-xl);
+  font-weight: var(--hssf-fw-bold);
+}
+
+.hssf-slide h4 {
+  font-size: var(--hssf-fs-lg);
+  font-weight: var(--hssf-fw-semibold);
+}
+
+.hssf-slide p {
+  margin: 0 0 var(--hssf-space-3);
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+  color: var(--hssf-color-text);
+}
+
+.hssf-slide p:last-child {
+  margin-bottom: 0;
+}
+
+.hssf-slide a {
+  color: var(--hssf-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.hssf-slide a:hover {
+  color: var(--hssf-color-primary-deep);
+}
+
+.hssf-slide strong {
+  font-weight: var(--hssf-fw-bold);
+  color: var(--hssf-color-text-strong);
+}
+
+.hssf-slide em {
+  font-style: italic;
+}
+
+.hssf-slide ul,
+.hssf-slide ol {
+  margin: 0 0 var(--hssf-space-4);
+  padding-left: 1.35em;
+  font-size: var(--hssf-fs-base);
+  line-height: var(--hssf-lh-relaxed);
+}
+
+.hssf-slide li + li {
+  margin-top: var(--hssf-space-2);
+}
+
+/* Inline code (not highlighted blocks) */
+.hssf-slide :not(pre) > code {
+  font-family: var(--hssf-font-mono);
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+  border-radius: var(--hssf-radius-sm);
+  background: var(--hssf-color-soft);
+  color: var(--hssf-color-primary-deep);
+}
+
+/* Code block chrome → components/content.css (PR-07)
+ * Syntax colors → highlight.js atom-one-dark (bundled)
+ */
+
+/* ── Typography utility classes ─────────────────────────── */
+
+.hssf-text-muted {
+  color: var(--hssf-color-muted);
+}
+
+.hssf-text-strong {
+  color: var(--hssf-color-text-strong);
+  font-weight: var(--hssf-fw-semibold);
+}
+
+.hssf-text-primary {
+  color: var(--hssf-color-primary);
+}
+
+.hssf-text-xs {
+  font-size: var(--hssf-fs-xs);
+}
+
+.hssf-text-sm {
+  font-size: var(--hssf-fs-sm);
+}
+
+.hssf-text-base {
+  font-size: var(--hssf-fs-base);
+}
+
+.hssf-text-md {
+  font-size: var(--hssf-fs-md);
+}
+
+.hssf-text-lg {
+  font-size: var(--hssf-fs-lg);
+}
+
+.hssf-text-xl {
+  font-size: var(--hssf-fs-xl);
+}
+
+.hssf-text-2xl {
+  font-size: var(--hssf-fs-2xl);
+}
+
+.hssf-text-3xl {
+  font-size: var(--hssf-fs-3xl);
+}
+
+.hssf-fw-medium {
+  font-weight: var(--hssf-fw-medium);
+}
+
+.hssf-fw-semibold {
+  font-weight: var(--hssf-fw-semibold);
+}
+
+.hssf-fw-bold {
+  font-weight: var(--hssf-fw-bold);
+}
+
+.hssf-fw-extrabold {
+  font-weight: var(--hssf-fw-extrabold);
+}
+
+/* Syntax colors: use official highlight.js Atom One Dark
+ * (bundled into dist/hssf.css as vendor/atom-one-dark.css).
+ * Do NOT use manual .hssf-tok-* classes.
+ */
+
+/* ── Screen-reader only ─────────────────────────────────── */
+
+.hssf-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ── Focus (keyboard) ───────────────────────────────────── */
+
+.hssf-canvas:focus {
+  outline: none;
+}
+
+.hssf-canvas:focus-visible {
+  outline: 2px solid var(--hssf-color-primary);
+  outline-offset: -2px;
+}
+
+.hssf-nav__btn:focus-visible,
+.hssf-slide a:focus-visible,
+.hssf-slide button:focus-visible {
+  outline: 2px solid var(--hssf-color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion ─────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --hssf-duration-fast: 0ms;
+    --hssf-duration: 0ms;
+    --hssf-duration-slow: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fragments → fragments.css (PR-05) */
+
+/* ── Button reset for chrome controls ───────────────────── */
+
+button.hssf-nav__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}

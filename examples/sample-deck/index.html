@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git Fundamentals cho Fresher | Rikkei Education · HSSF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Workspace dist (pnpm build). After publish: jsDelivr pin hssf@0.1.0 -->
+    <link rel="stylesheet" href="../../packages/hssf/dist/hssf.css" />
+    <link rel="stylesheet" href="./styles/deck.css" />
+  </head>
+  <body class="hssf-body">
+    <div
+      class="hssf-canvas"
+      data-hssf-canvas
+      id="deck"
+      tabindex="0"
+      role="region"
+      aria-roledescription="slide deck"
+      aria-label="Git Fundamentals cho Fresher"
+    >
+      <div class="hssf-progress" data-hssf-progress aria-hidden="true">
+        <div class="hssf-progress__bar" data-hssf-progress-bar></div>
+      </div>
+
+      <div
+        class="hssf-live hssf-sr-only"
+        data-hssf-live
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+
+      <div class="hssf-stage-wrap">
+        <div class="hssf-stage" data-hssf-stage>
+          <!-- ========== 1 Title ========== -->
+          <section
+            class="hssf-slide hssf-slide--title is-active"
+            data-hssf-slide
+            data-hssf-label="Title"
+            aria-hidden="false"
+          >
+            <div class="hssf-slide__inner">
+              <div class="deck-title-with-accent">
+                <div class="hssf-accent hssf-accent--bar-left">
+                  <div class="hssf-title-block hssf-title-block--left">
+                    <p class="hssf-title-block__eyebrow">Session · Fresher</p>
+                    <h1 class="hssf-title-block__title">
+                      Git Fundamentals cho Fresher
+                    </h1>
+                    <p class="hssf-title-block__meta">
+                      Rikkei Education · Backend Starter · 60–75 phút
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 2 Agenda ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Agenda"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Nội dung buổi học</h2>
+                <p class="hssf-header__subtitle">Lộ trình 4 phần chính</p>
+              </header>
+              <ol class="hssf-agenda">
+                <li class="hssf-agenda__item">
+                  <span class="hssf-agenda__num">01</span>
+                  <p class="hssf-agenda__text">Vì sao cần Git &amp; VCS</p>
+                </li>
+                <li class="hssf-agenda__item">
+                  <span class="hssf-agenda__num">02</span>
+                  <p class="hssf-agenda__text">Cài đặt &amp; cấu hình</p>
+                </li>
+                <li class="hssf-agenda__item">
+                  <span class="hssf-agenda__num">03</span>
+                  <p class="hssf-agenda__text">Vòng đời file &amp; lệnh thiết yếu</p>
+                </li>
+                <li class="hssf-agenda__item">
+                  <span class="hssf-agenda__num">04</span>
+                  <p class="hssf-agenda__text">Branch, merge &amp; lab</p>
+                </li>
+              </ol>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 3 Section Why ========== -->
+          <section
+            class="hssf-slide hssf-slide--section"
+            data-hssf-slide
+            data-hssf-label="Sec-Why"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-section-block">
+                <span class="hssf-section-block__num">01</span>
+                <h2 class="hssf-section-block__title">Vì sao cần Git?</h2>
+              </div>
+            </div>
+            <footer class="hssf-footer hssf-footer--light">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 4 Pain / compare ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Pain"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Vấn đề khi không có VCS</h2>
+                <p class="hssf-header__subtitle">So sánh thực tế fresher</p>
+              </header>
+              <div class="hssf-compare">
+                <div class="hssf-compare__col hssf-compare__col--cons">
+                  <h3 class="hssf-compare__title">Hạn chế</h3>
+                  <ul class="hssf-list">
+                    <li>Copy folder: <code>project_final_v2</code></li>
+                    <li>Mất code / ghi đè lẫn nhau</li>
+                    <li>Khó biết ai sửa gì, khi nào</li>
+                  </ul>
+                </div>
+                <div class="hssf-compare__col hssf-compare__col--pros">
+                  <h3 class="hssf-compare__title">Có Git</h3>
+                  <ul class="hssf-list">
+                    <li>Lịch sử rõ ràng, rollback được</li>
+                    <li>Làm việc song song an toàn</li>
+                    <li>Review &amp; hợp tác qua remote</li>
+                  </ul>
+                </div>
+              </div>
+              <aside class="hssf-callout hssf-callout--tip deck-gap-sm">
+                <p class="hssf-callout__label">Mẹo</p>
+                <p class="hssf-callout__body">
+                  VCS = Version Control System. Git là VCS phổ biến nhất trong
+                  team Rikkei.
+                </p>
+              </aside>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 5 Three states ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="VCS"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Ba trạng thái trong Git</h2>
+                <p class="hssf-header__subtitle">Working · Staging · Repository</p>
+              </header>
+              <div class="hssf-diagram">
+                <div class="hssf-diagram__frame">
+                  <div class="hssf-diagram__node">Working tree</div>
+                  <span class="hssf-diagram__arrow" aria-hidden="true">→</span>
+                  <div class="hssf-diagram__node">Staging</div>
+                  <span class="hssf-diagram__arrow" aria-hidden="true">→</span>
+                  <div class="hssf-diagram__node">Repository</div>
+                </div>
+                <p class="hssf-diagram__caption">
+                  File đi qua staging trước khi thành commit
+                </p>
+              </div>
+              <div class="hssf-defs deck-gap-md">
+                <div class="hssf-defs__row">
+                  <dt>Working tree</dt>
+                  <dd>Thư mục bạn đang sửa trên máy</dd>
+                </div>
+                <div class="hssf-defs__row">
+                  <dt>Staging (index)</dt>
+                  <dd>Danh sách thay đổi chuẩn bị commit</dd>
+                </div>
+                <div class="hssf-defs__row">
+                  <dt>Repository</dt>
+                  <dd>Lịch sử commit (local / remote)</dd>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 6 Section Install ========== -->
+          <section
+            class="hssf-slide hssf-slide--section"
+            data-hssf-slide
+            data-hssf-label="Sec-Install"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-section-block">
+                <span class="hssf-section-block__num">02</span>
+                <h2 class="hssf-section-block__title">Cài đặt &amp; cấu hình</h2>
+              </div>
+            </div>
+            <footer class="hssf-footer hssf-footer--light">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 7 Install steps + code (fragments) ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Install-Steps"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Cài Git và config user</h2>
+                <p class="hssf-header__subtitle">Làm một lần trên máy dev</p>
+              </header>
+              <div class="hssf-columns hssf-columns--1-2">
+                <div class="hssf-columns__col">
+                  <ol class="hssf-steps">
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">01</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Cài Git</h3>
+                        <p class="hssf-steps__desc">
+                          git-scm.com hoặc package manager
+                        </p>
+                      </div>
+                    </li>
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">02</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Đặt tên &amp; email</h3>
+                        <p class="hssf-steps__desc">Dùng email công ty / học viện</p>
+                      </div>
+                    </li>
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">03</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Kiểm tra</h3>
+                        <p class="hssf-steps__desc"><code>git --version</code></p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+                <div class="hssf-columns__col">
+                  <div class="hssf-code" data-hssf-fragment>
+                    <div class="hssf-code__header">
+                      <span class="hssf-code__filename">config.sh</span>
+                      <span class="hssf-code__lang">bash</span>
+                    </div>
+                    <pre class="hssf-code__pre"><code class="hssf-code__code language-bash">git config --global user.name "Nguyen Van A"
+git config --global user.email "a.nguyen@rikkeisoft.com"
+git config --list --show-origin
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 8 Section Lifecycle ========== -->
+          <section
+            class="hssf-slide hssf-slide--section"
+            data-hssf-slide
+            data-hssf-label="Sec-Lifecycle"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-section-block">
+                <span class="hssf-section-block__num">03</span>
+                <h2 class="hssf-section-block__title">Vòng đời file</h2>
+              </div>
+            </div>
+            <footer class="hssf-footer hssf-footer--light">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 9 Timeline (fragments) ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Timeline"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">status → add → commit</h2>
+                <p class="hssf-header__subtitle">Timeline thao tác hằng ngày</p>
+              </header>
+              <ul class="hssf-timeline">
+                <li class="hssf-timeline__item" data-hssf-fragment>
+                  <span class="hssf-timeline__dot" aria-hidden="true"></span>
+                  <div class="hssf-timeline__body">
+                    <p class="hssf-timeline__time">1 · status</p>
+                    <p class="hssf-timeline__text">
+                      Xem file mới / đã sửa / đã stage
+                    </p>
+                  </div>
+                </li>
+                <li class="hssf-timeline__item" data-hssf-fragment>
+                  <span class="hssf-timeline__dot" aria-hidden="true"></span>
+                  <div class="hssf-timeline__body">
+                    <p class="hssf-timeline__time">2 · add</p>
+                    <p class="hssf-timeline__text">
+                      <code>git add .</code> hoặc add từng file có chủ đích
+                    </p>
+                  </div>
+                </li>
+                <li class="hssf-timeline__item" data-hssf-fragment>
+                  <span class="hssf-timeline__dot" aria-hidden="true"></span>
+                  <div class="hssf-timeline__body">
+                    <p class="hssf-timeline__time">3 · commit</p>
+                    <p class="hssf-timeline__text">
+                      Snapshot với message rõ ràng
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 10 Commands table + heading + code ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Commands"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-heading">
+                <p class="hssf-heading__kicker">Cheat sheet</p>
+                <h2 class="hssf-heading__title">Lệnh thiết yếu</h2>
+              </div>
+              <table class="hssf-table hssf-table--striped hssf-table--compact">
+                <thead>
+                  <tr>
+                    <th>Lệnh</th>
+                    <th>Vai trò</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>git status</code></td>
+                    <td>Trạng thái working tree</td>
+                  </tr>
+                  <tr>
+                    <td><code>git add &lt;path&gt;</code></td>
+                    <td>Đưa vào staging</td>
+                  </tr>
+                  <tr>
+                    <td><code>git commit -m "…"</code></td>
+                    <td>Tạo snapshot</td>
+                  </tr>
+                  <tr>
+                    <td><code>git log --oneline</code></td>
+                    <td>Xem lịch sử gọn</td>
+                  </tr>
+                  <tr>
+                    <td><code>git diff</code></td>
+                    <td>Xem thay đổi chưa stage</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="hssf-code deck-gap-sm">
+                <div class="hssf-code__header">
+                  <span class="hssf-code__filename">daily.sh</span>
+                  <span class="hssf-code__lang">bash</span>
+                </div>
+                <pre class="hssf-code__pre"><code class="hssf-code__code language-bash">git status
+git add src/UserService.java
+git commit -m "feat: validate email on register"
+git log --oneline -5
+</code></pre>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 11 Section Branch ========== -->
+          <section
+            class="hssf-slide hssf-slide--section"
+            data-hssf-slide
+            data-hssf-label="Sec-Branch"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-section-block">
+                <span class="hssf-section-block__num">04</span>
+                <h2 class="hssf-section-block__title">Branch cơ bản</h2>
+              </div>
+            </div>
+            <footer class="hssf-footer hssf-footer--light">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 12 Branch types grid ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Branch-Types"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">main / feature / hotfix</h2>
+                <p class="hssf-header__subtitle">Quy ước đặt tên nhánh</p>
+              </header>
+              <div class="hssf-grid hssf-grid--3">
+                <article class="hssf-card hssf-card--soft">
+                  <div class="hssf-card__icon">
+                    <div class="hssf-icon-circle hssf-icon-circle--md">M</div>
+                  </div>
+                  <h3 class="hssf-card__title">main</h3>
+                  <div class="hssf-card__body">
+                    Nhánh ổn định, luôn deploy được.
+                  </div>
+                </article>
+                <article class="hssf-card hssf-card--outline">
+                  <div class="hssf-card__icon">
+                    <div
+                      class="hssf-icon-circle hssf-icon-circle--md hssf-icon-circle--soft"
+                    >
+                      F
+                    </div>
+                  </div>
+                  <h3 class="hssf-card__title">feature/*</h3>
+                  <div class="hssf-card__body">
+                    Phát triển tính năng mới, tách khỏi main.
+                  </div>
+                </article>
+                <article class="hssf-card hssf-card--shadow">
+                  <div class="hssf-card__icon">
+                    <div class="hssf-icon-circle hssf-icon-circle--md">H</div>
+                  </div>
+                  <h3 class="hssf-card__title">hotfix/*</h3>
+                  <div class="hssf-card__body">
+                    Sửa lỗi production gấp, merge nhanh về main.
+                  </div>
+                </article>
+              </div>
+              <div class="deck-row-labels">
+                <div class="hssf-icon-label">
+                  <div class="hssf-icon-circle hssf-icon-circle--sm">M</div>
+                  <span class="hssf-icon-label__text">main</span>
+                </div>
+                <div class="hssf-icon-label">
+                  <div
+                    class="hssf-icon-circle hssf-icon-circle--sm hssf-icon-circle--soft"
+                  >
+                    F
+                  </div>
+                  <span class="hssf-icon-label__text">feature/login</span>
+                </div>
+                <div class="hssf-icon-label">
+                  <div class="hssf-icon-circle hssf-icon-circle--sm">H</div>
+                  <span class="hssf-icon-label__text">hotfix/null-npe</span>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 13 Branch steps (fragments) ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Branch-Steps"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Tạo branch, commit, merge</h2>
+                <p class="hssf-header__subtitle">Flow chuẩn fresher</p>
+              </header>
+              <div class="hssf-columns hssf-columns--2">
+                <div class="hssf-columns__col">
+                  <ol class="hssf-steps">
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">01</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Tạo &amp; checkout</h3>
+                        <p class="hssf-steps__desc">
+                          <code>git switch -c feature/x</code>
+                        </p>
+                      </div>
+                    </li>
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">02</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Commit trên feature</h3>
+                        <p class="hssf-steps__desc">add → commit message rõ</p>
+                      </div>
+                    </li>
+                    <li class="hssf-steps__item" data-hssf-fragment>
+                      <span class="hssf-steps__num">03</span>
+                      <div class="hssf-steps__content">
+                        <h3 class="hssf-steps__title">Merge về main</h3>
+                        <p class="hssf-steps__desc">
+                          switch main → merge feature
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+                <div class="hssf-columns__col">
+                  <div class="hssf-code">
+                    <div class="hssf-code__header">
+                      <span class="hssf-code__filename">branch.sh</span>
+                      <span class="hssf-code__lang">bash</span>
+                    </div>
+                    <pre class="hssf-code__pre"><code class="hssf-code__code language-bash">git switch -c feature/validate-email
+# ... code + commit ...
+git switch main
+git merge feature/validate-email
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 14 Danger ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Danger"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Những việc không nên làm</h2>
+                <p class="hssf-header__subtitle">Anti-patterns fresher</p>
+              </header>
+              <ul class="hssf-list">
+                <li>Force push lên <code>main</code> chung của team</li>
+                <li>Commit file <code>.env</code>, secret, file build lớn</li>
+                <li>Message kiểu “fix”, “update”, “asdasd”</li>
+                <li>Sửa trực tiếp trên main khi đang có feature dở</li>
+              </ul>
+              <aside class="hssf-callout hssf-callout--danger deck-gap-md">
+                <p class="hssf-callout__label">Lưu ý</p>
+                <p class="hssf-callout__body">
+                  <code>git push --force</code> trên nhánh shared có thể xóa
+                  lịch sử đồng đội. Hỏi mentor trước.
+                </p>
+              </aside>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 15 Lab + figure ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Lab"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Lab: clone → branch → PR</h2>
+                <p class="hssf-header__subtitle">Thực hành 20 phút</p>
+              </header>
+              <div class="hssf-columns hssf-columns--1-2">
+                <div class="hssf-columns__col">
+                  <div class="hssf-code">
+                    <div class="hssf-code__header">
+                      <span class="hssf-code__filename">lab.sh</span>
+                      <span class="hssf-code__lang">bash</span>
+                    </div>
+                    <pre class="hssf-code__pre"><code class="hssf-code__code language-bash">git clone &lt;repo-url&gt;
+cd project
+git switch -c feature/your-name
+# sửa README → add → commit
+git push -u origin HEAD
+# mở Pull Request trên GitHub/GitLab
+</code></pre>
+                  </div>
+                </div>
+                <div class="hssf-columns__col deck-figure-wrap">
+                  <figure class="hssf-figure hssf-figure--border hssf-figure--shadow">
+                    <img
+                      class="hssf-figure__img"
+                      src="./assets/images/branch-flow.svg"
+                      alt="Sơ đồ nhánh main và feature merge về main"
+                    />
+                    <figcaption class="hssf-figure__caption">
+                      Feature tách từ main, commit, rồi merge trở lại
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 16 Messages ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Messages"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Commit message tốt vs xấu</h2>
+                <p class="hssf-header__subtitle">Đọc được trong <code>git log</code></p>
+              </header>
+              <blockquote class="hssf-quote">
+                <p>Commit sớm, commit thường xuyên, message rõ ràng.</p>
+                <cite class="hssf-quote__cite">Rikkei Education</cite>
+              </blockquote>
+              <div class="hssf-compare deck-gap-sm">
+                <div class="hssf-compare__col hssf-compare__col--cons">
+                  <h3 class="hssf-compare__title">Tránh</h3>
+                  <ul class="hssf-list">
+                    <li><code>fix</code> / <code>update</code></li>
+                    <li><code>asdasd</code></li>
+                    <li>Một commit 50 file không liên quan</li>
+                  </ul>
+                </div>
+                <div class="hssf-compare__col hssf-compare__col--pros">
+                  <h3 class="hssf-compare__title">Nên</h3>
+                  <ul class="hssf-list">
+                    <li><code>feat: add email validation</code></li>
+                    <li><code>fix: null check on order id</code></li>
+                    <li><code>docs: update README setup</code></li>
+                  </ul>
+                </div>
+              </div>
+              <aside class="hssf-callout hssf-callout--info deck-gap-sm">
+                <p class="hssf-callout__label">Gợi ý</p>
+                <p class="hssf-callout__body">
+                  Prefix: <code>feat</code>, <code>fix</code>, <code>docs</code>,
+                  <code>refactor</code>, <code>test</code>.
+                </p>
+              </aside>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 17 Summary ========== -->
+          <section
+            class="hssf-slide hssf-slide--content"
+            data-hssf-slide
+            data-hssf-label="Summary"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <header class="hssf-header">
+                <div class="hssf-header__accent" aria-hidden="true"></div>
+                <h2 class="hssf-header__title">Tổng kết</h2>
+                <p class="hssf-header__subtitle">Mang về áp dụng ngay</p>
+              </header>
+              <ul class="hssf-list">
+                <li>Git lưu lịch sử — không còn “folder final final”</li>
+                <li>Ba vùng: working → staging → repository</li>
+                <li>Branch để làm việc song song an toàn</li>
+                <li>Message rõ = team review nhanh hơn</li>
+              </ul>
+              <div class="deck-stats-row">
+                <div class="hssf-stat">
+                  <p class="hssf-stat__value">3</p>
+                  <p class="hssf-stat__label">vùng chính</p>
+                </div>
+                <div class="hssf-stat">
+                  <p class="hssf-stat__value">5</p>
+                  <p class="hssf-stat__label">lệnh cốt lõi</p>
+                </div>
+                <div class="hssf-stat">
+                  <p class="hssf-stat__value">1</p>
+                  <p class="hssf-stat__label">lab cần hoàn thành</p>
+                </div>
+              </div>
+            </div>
+            <footer class="hssf-footer">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+
+          <!-- ========== 18 End ========== -->
+          <section
+            class="hssf-slide hssf-slide--section"
+            data-hssf-slide
+            data-hssf-label="End"
+            aria-hidden="true"
+          >
+            <div class="hssf-slide__inner">
+              <div class="hssf-brand-end">
+                <p class="hssf-brand-end__kicker">KẾT THÚC</p>
+                <h2 class="hssf-brand-end__title">
+                  HỌC VIỆN ĐÀO TẠO LẬP TRÌNH CHẤT LƯỢNG NHẬT BẢN
+                </h2>
+                <p class="hssf-brand-end__org">Rikkei Education</p>
+              </div>
+            </div>
+            <footer class="hssf-footer hssf-footer--light hssf-footer--nopage">
+              <span class="hssf-footer__copy"
+                >© 2026 By Rikkei Academy - Rikkei Education - All rights
+                reserved.</span
+              >
+              <span class="hssf-footer__page" data-hssf-page></span>
+            </footer>
+          </section>
+        </div>
+      </div>
+
+      <nav class="hssf-nav" data-hssf-nav aria-label="Điều hướng slide">
+        <button
+          type="button"
+          class="hssf-nav__btn"
+          data-hssf-prev
+          aria-label="Previous slide"
+        >
+          ‹
+        </button>
+        <span class="hssf-nav__counter" data-hssf-counter>1 / 18</span>
+        <button
+          type="button"
+          class="hssf-nav__btn"
+          data-hssf-next
+          aria-label="Next slide"
+        >
+          ›
+        </button>
+        <button
+          type="button"
+          class="hssf-nav__btn"
+          data-hssf-fullscreen
+          aria-label="Toggle fullscreen"
+        >
+          ⛶
+        </button>
+      </nav>
+    </div>
+
+    <script src="../../packages/hssf/dist/hssf.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var canvas = document.querySelector("[data-hssf-canvas]");
+        window.HSSF.init(canvas);
+      });
+    </script>
+  </body>
+</html>
