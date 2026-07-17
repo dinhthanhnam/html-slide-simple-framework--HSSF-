@@ -149,6 +149,17 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  gap: var(--hssf-space-5);
+  box-sizing: border-box;
+}
+
+/* Optional denser / roomier body under header */
+.hssf-slide__inner--tight {
+  gap: var(--hssf-space-3);
+}
+
+.hssf-slide__inner--loose {
+  gap: var(--hssf-space-6);
 }
 
 /* ── Footer (inside stage / slide) ──────────────────────── */

@@ -238,6 +238,187 @@
   color: #ffffff;
 }
 
+/* ── Layout primitives (stack / cluster / split / fill) ───
+ * Teaching-deck flex/grid helpers — Tailwind-like gaps without utility chaos.
+ */
+
+.hssf-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--hssf-space-4);
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.hssf-stack--tight {
+  gap: var(--hssf-space-2);
+}
+
+.hssf-stack--loose {
+  gap: var(--hssf-space-6);
+}
+
+.hssf-stack--xl {
+  gap: var(--hssf-space-8);
+}
+
+.hssf-stack--center {
+  align-items: center;
+  text-align: center;
+}
+
+.hssf-cluster {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--hssf-space-4);
+  min-width: 0;
+}
+
+.hssf-cluster--tight {
+  gap: var(--hssf-space-2);
+}
+
+.hssf-cluster--loose {
+  gap: var(--hssf-space-6);
+}
+
+.hssf-cluster--center {
+  justify-content: center;
+}
+
+.hssf-cluster--between {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hssf-cluster--end {
+  justify-content: flex-end;
+}
+
+/* Two regions: left / right (or top/bottom with --col) */
+.hssf-split {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--hssf-space-6);
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.hssf-split--col {
+  flex-direction: column;
+}
+
+.hssf-split--center {
+  align-items: center;
+}
+
+.hssf-split--start {
+  align-items: flex-start;
+}
+
+.hssf-split--tight {
+  gap: var(--hssf-space-4);
+}
+
+.hssf-split--loose {
+  gap: var(--hssf-space-8);
+}
+
+.hssf-split__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+}
+
+.hssf-split__side {
+  flex: 0 1 42%;
+  max-width: 48%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+}
+
+.hssf-split--col .hssf-split__side {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+/* Text + media teaching pattern */
+.hssf-media-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--hssf-space-6);
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.hssf-media-split--1-2 {
+  grid-template-columns: 1fr 2fr;
+}
+
+.hssf-media-split--2-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.hssf-media-split--media-left {
+  direction: rtl;
+}
+
+.hssf-media-split--media-left > * {
+  direction: ltr;
+}
+
+.hssf-media-split__text,
+.hssf-media-split__media {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hssf-space-4);
+}
+
+.hssf-media-split__media {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grow to fill remaining slide body under header */
+.hssf-fill {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hssf-fill--center {
+  justify-content: center;
+}
+
+.hssf-fill--end {
+  justify-content: flex-end;
+}
+
+.hssf-spacer {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
 /* ── Columns ────────────────────────────────────────────── */
 
 .hssf-columns {
@@ -265,12 +446,49 @@
   grid-template-columns: 1fr 2fr;
 }
 
+.hssf-columns--3-1 {
+  grid-template-columns: 3fr 1fr;
+}
+
+.hssf-columns--1-3 {
+  grid-template-columns: 1fr 3fr;
+}
+
+.hssf-columns--tight {
+  gap: var(--hssf-space-4);
+}
+
+.hssf-columns--loose {
+  gap: var(--hssf-space-8);
+}
+
+.hssf-columns--start {
+  align-items: start;
+}
+
+.hssf-columns--center {
+  align-items: center;
+}
+
+.hssf-columns--end {
+  align-items: end;
+}
+
 .hssf-columns__col {
   min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   gap: var(--hssf-space-4);
+}
+
+.hssf-columns__col--center {
+  align-items: center;
+  text-align: center;
+}
+
+.hssf-columns__col--grow {
+  flex: 1 1 auto;
 }
 
 /* ── Grid ───────────────────────────────────────────────── */
@@ -295,6 +513,27 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* Auto-fit cards (min ~16rem at stage scale) */
+.hssf-grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(var(--hssf-grid-min, 16rem), 1fr));
+}
+
+.hssf-grid--tight {
+  gap: var(--hssf-space-3);
+}
+
+.hssf-grid--loose {
+  gap: var(--hssf-space-6);
+}
+
+.hssf-grid--start {
+  align-items: start;
+}
+
+.hssf-grid--center {
+  align-items: center;
+}
+
 /* ── Card ───────────────────────────────────────────────── */
 
 .hssf-card {
@@ -302,12 +541,31 @@
   flex-direction: column;
   gap: var(--hssf-space-3);
   min-height: var(--hssf-card-min-h);
+  height: 100%;
   padding: var(--hssf-space-5);
   border-radius: var(--hssf-radius-lg);
   background: var(--hssf-color-bg);
   border: 1px solid var(--hssf-color-border);
   min-width: 0;
   box-sizing: border-box;
+}
+
+.hssf-card--compact {
+  min-height: 0;
+  padding: var(--hssf-space-4);
+  gap: var(--hssf-space-2);
+}
+
+.hssf-card--center {
+  align-items: center;
+  text-align: center;
+}
+
+.hssf-card--row {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--hssf-space-4);
+  min-height: 0;
 }
 
 .hssf-card--soft {

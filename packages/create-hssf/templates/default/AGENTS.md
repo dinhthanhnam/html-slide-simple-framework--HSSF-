@@ -59,7 +59,7 @@ Scale **all** `hssf-fs-*` text via stage root (not bare `rem` / not only body):
 
 ## Allowlist (public `hssf-*`)
 
-title-block, section-block, brand-end, header, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, **flow** (node/edge/line), **arrow**, **connector**, **fx** (`hssf-fx--hover-pulse|spin|lift|scale|glow`, `hssf-fx--pulse|spin|spin-slow`), **term** (+ modal runtime), figure, footer, nav, progress
+title-block, section-block, brand-end, header, **stack / cluster / split / media-split / fill / spacer**, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, flow, arrow, connector, fx (`hssf-fx--*`), term (+ modal), figure, **frame**, **carousel**, footer, nav, progress
 
 ## Terms (glossary modal)
 
@@ -171,6 +171,55 @@ Pair with `hssf-slide--section` + `hssf-footer--light`:
     <span class="hssf-arrow hssf-arrow--right"></span>
   </span>
   <div class="hssf-flow__node hssf-flow__node--primary">B</div>
+</div>
+```
+
+### Layout: text + media
+
+```html
+<div class="hssf-media-split hssf-fill">
+  <div class="hssf-media-split__text hssf-stack">
+    <ul class="hssf-list"><li>Mục 1</li></ul>
+  </div>
+  <div class="hssf-media-split__media">
+    <figure class="hssf-frame hssf-frame--browser">
+      <div class="hssf-frame__chrome" aria-hidden="true">
+        <span class="hssf-frame__dots">
+          <span class="hssf-frame__dot"></span>
+          <span class="hssf-frame__dot"></span>
+          <span class="hssf-frame__dot"></span>
+        </span>
+        <p class="hssf-frame__titlebar">demo</p>
+      </div>
+      <div class="hssf-frame__media">
+        <img class="hssf-frame__img" src="assets/shot.png" alt="Demo" />
+      </div>
+    </figure>
+  </div>
+</div>
+```
+
+### Carousel
+
+```html
+<div class="hssf-carousel" data-hssf-carousel tabindex="0">
+  <div class="hssf-carousel__viewport">
+    <div class="hssf-carousel__track">
+      <figure class="hssf-carousel__slide is-active" data-hssf-carousel-slide>
+        <img class="hssf-carousel__img" src="assets/1.png" alt="1" />
+        <figcaption class="hssf-carousel__caption">Bước 1</figcaption>
+      </figure>
+      <figure class="hssf-carousel__slide" data-hssf-carousel-slide>
+        <img class="hssf-carousel__img" src="assets/2.png" alt="2" />
+      </figure>
+    </div>
+  </div>
+  <div class="hssf-carousel__controls">
+    <button type="button" class="hssf-carousel__btn" data-hssf-carousel-prev aria-label="Trước">‹</button>
+    <div class="hssf-carousel__dots" data-hssf-carousel-dots></div>
+    <span class="hssf-carousel__counter" data-hssf-carousel-counter></span>
+    <button type="button" class="hssf-carousel__btn" data-hssf-carousel-next aria-label="Sau">›</button>
+  </div>
 </div>
 ```
 

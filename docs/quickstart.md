@@ -46,7 +46,7 @@ Serve **repo root** so relative links to `packages/hssf/dist/*` resolve.
 ## Minimal HTML contract
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hssf-slides@0.3.0/dist/hssf.min.css" />
 <!-- Montserrat via Google Fonts or self-host -->
 <body class="hssf-body">
   <div class="hssf-canvas" data-hssf-canvas tabindex="0" role="region"
@@ -66,7 +66,7 @@ Serve **repo root** so relative links to `packages/hssf/dist/*` resolve.
     </div>
     <nav class="hssf-nav" data-hssf-nav>…</nav>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/hssf-slides@0.3.0/dist/hssf.min.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       window.HSSF.init(document.querySelector("[data-hssf-canvas]"));
@@ -75,7 +75,7 @@ Serve **repo root** so relative links to `packages/hssf/dist/*` resolve.
 </body>
 ```
 
-**Pin the version** (`hssf-slides@0.2.1`), never floating `@latest` in production decks.
+**Pin the version** (`hssf-slides@0.3.0`), never floating `@latest` in production decks.
 
 ### Deck type size
 

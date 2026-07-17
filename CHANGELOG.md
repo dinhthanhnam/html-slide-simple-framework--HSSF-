@@ -2,6 +2,30 @@
 
 All notable changes to HSSF (`hssf-slides` + `@dinhthanhnam/create-hssf`) are documented here.
 
+## [0.3.0] — 2026-07-17
+
+Layout primitives + media frames + carousel (reduce need for Tailwind on decks).
+
+### Added — layout
+
+- `hssf-stack`, `hssf-cluster`, `hssf-split`, `hssf-media-split`, `hssf-fill`, `hssf-spacer`
+- Columns: `--3-1` / `--1-3`, gap `--tight|--loose`, align `--start|--center|--end`
+- Grid: `--auto`, gap/align modifiers
+- Card: `--compact`, `--center`, `--row`; equal height in grids
+- `hssf-slide__inner` default gap + `--tight|--loose`
+
+### Added — media
+
+- **`hssf-frame`**: soft/shadow/primary, browser chrome, polaroid, device, badge, caption
+- **`hssf-carousel`**: viewport + slides + prev/next + dots + counter; runtime `attachCarousels`
+- Deck arrows not stolen unless focus is inside carousel
+
+### Docs
+
+- Updated `docs/components/layout.md`, `media.md`, allowlist, scaffold `AGENTS.md` snippets
+
+---
+
 ## [0.2.1] — 2026-07-16
 
 ### Fixed

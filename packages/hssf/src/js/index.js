@@ -36,8 +36,9 @@ import {
   emitFragmentEvent,
 } from "./fragments.js";
 import { attachTerms } from "./terms.js";
+import { attachCarousels } from "./carousel.js";
 
-export const version = "0.2.1";
+export const version = "0.3.0";
 
 export {
   highlightCode,
@@ -71,6 +72,7 @@ export {
   hasVisibleFragments,
   emitFragmentEvent,
   attachTerms,
+  attachCarousels,
 };
 
 /**
@@ -87,6 +89,7 @@ export {
  *   autofocus?: boolean,
  *   navigation?: boolean,
  *   terms?: boolean,
+ *   carousel?: boolean,
  * }} [options]
  */
 export function init(root, options = {}) {
@@ -136,6 +139,12 @@ export function init(root, options = {}) {
   let termsCtl = null;
   if (options.terms !== false) {
     termsCtl = attachTerms(root, { enabled: true });
+  }
+
+  /** @type {ReturnType<typeof attachCarousels> | null} */
+  let carouselCtl = null;
+  if (options.carousel !== false) {
+    carouselCtl = attachCarousels(root, { enabled: true });
   }
 
   const deck = {
@@ -191,6 +200,10 @@ export function init(root, options = {}) {
       return toggleFullscreen(root);
     },
     destroy() {
+      if (carouselCtl) {
+        carouselCtl.destroy();
+        carouselCtl = null;
+      }
       if (termsCtl) {
         termsCtl.destroy();
         termsCtl = null;

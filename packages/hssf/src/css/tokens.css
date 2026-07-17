@@ -124,6 +124,9 @@
   --hssf-flow-node-min-w: 8.5rem;
   --hssf-timeline-dot: 12px;
   --hssf-figure-max-h: 520px;
+  --hssf-frame-max-h: 520px;
+  --hssf-carousel-max-h: 28rem;
+  --hssf-grid-min: 16rem;
 
   /* ── Motion ───────────────────────────────────────────── */
   --hssf-duration-fast: 150ms;
@@ -144,5 +147,5 @@
   --hssf-footer-copy: "By Rikkei Academy - Rikkei Education - All rights reserved.";
 
   /* ── Meta ─────────────────────────────────────────────── */
-  --hssf-version: "0.2.1";
+  --hssf-version: "0.3.0";
 }

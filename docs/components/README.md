@@ -15,14 +15,14 @@ Runtime CSS/JS is versioned on npm — not a copy-source registry.
 
 | Group | Doc | Blocks |
 |-------|-----|--------|
-| Layout | [layout.md](./layout.md) | header, title-block, section-block, brand-end, columns, grid, card |
+| Layout | [layout.md](./layout.md) | header, stack, cluster, split, media-split, columns, grid, card |
 | Content | [content.md](./content.md) | heading, list, callout, quote, table, code |
 | Teaching | [teaching.md](./teaching.md) | steps, timeline, compare, agenda, defs |
 | Visual | [visual.md](./visual.md) | icon-circle, icon-label, stat, accent, diagram |
 | Flow | [flow.md](./flow.md) | flow, arrow, connector |
 | Effects | [effects.md](./effects.md) | `hssf-fx--*` hover/pulse/spin |
 | Term | [term.md](./term.md) | glossary term + modal |
-| Media | [media.md](./media.md) | figure |
+| Media | [media.md](./media.md) | figure, **frame**, **carousel** |
 | Fragments | [fragments.md](./fragments.md) | `data-hssf-fragment` |
 
 ## Chrome (not “components” but required)
@@ -42,9 +42,15 @@ hssf-title-block hssf-title-block--center|--left
 hssf-title-block__eyebrow __title __meta
 hssf-section-block __num __title
 hssf-brand-end __kicker __title __org __logo
-hssf-columns --2|--3|--2-1|--1-2 __col
-hssf-grid --2|--3|--4
-hssf-card --soft|--outline|--shadow __icon __title __body
+hssf-stack --tight|--loose|--xl|--center
+hssf-cluster --tight|--loose|--center|--between|--end
+hssf-split --col|--center|--start|--tight|--loose __main __side
+hssf-media-split --1-2|--2-1|--media-left __text __media
+hssf-fill --center|--end
+hssf-spacer
+hssf-columns --2|--3|--2-1|--1-2|--3-1|--1-3 --tight|--loose --start|--center|--end __col --center|--grow
+hssf-grid --2|--3|--4|--auto --tight|--loose --start|--center
+hssf-card --soft|--outline|--shadow|--compact|--center|--row __icon __title __body
 hssf-heading __kicker __title
 hssf-list --sub|--numbered
 hssf-callout --info|--success|--warning|--danger|--tip __label __body
@@ -70,10 +76,15 @@ hssf-fx--pulse|--spin|--spin-slow
 hssf-fx--hover-pulse|--hover-spin|--hover-lift|--hover-scale|--hover-glow
 hssf-term --chip
 hssf-term-modal (runtime) __backdrop __dialog __close __kicker __title __body
-hssf-figure --border|--shadow|--contain __img __caption
+hssf-figure --border|--shadow|--contain|--cover|--full __img __caption
+hssf-frame --soft|--shadow|--primary|--browser|--polaroid|--device|--cover|--sm|--lg
+hssf-frame__chrome __dots __dot __titlebar __media __img __badge __caption
+hssf-carousel --shadow __viewport __track __slide __img __caption __controls __btn __dots __dot __counter
 ```
 
-States: `.is-active` (slide), `.is-visible` (fragment — runtime only), `.is-open` (term modal — runtime only).
+States: `.is-active` (slide / carousel slide / carousel dot), `.is-visible` (fragment — runtime only), `.is-open` (term modal — runtime only).
+
+Carousel data: `data-hssf-carousel`, `data-hssf-carousel-slide`, `data-hssf-carousel-prev|next|dots|counter`, `data-hssf-carousel-loop`.
 
 Data attrs (terms): `data-hssf-term`, `data-hssf-term-title`, `data-hssf-term-body`, `data-hssf-term-def`, `data-hssf-term-def-title`.
 

@@ -257,6 +257,15 @@ export function createNavigation(canvas, options = {}, win = globalThis) {
     }
 
     const key = e.key;
+    // Focus inside carousel: left/right owned by carousel (not deck)
+    if (
+      t &&
+      typeof t.closest === "function" &&
+      t.closest("[data-hssf-carousel]") &&
+      (key === "ArrowLeft" || key === "ArrowRight")
+    ) {
+      return;
+    }
     if (
       key === "ArrowRight" ||
       key === "PageDown" ||
