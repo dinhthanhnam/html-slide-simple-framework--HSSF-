@@ -2,6 +2,23 @@
 
 All notable changes to HSSF (`hssf-slides` + `@dinhthanhnam/create-hssf`) are documented here.
 
+## [0.2.1] — 2026-07-16
+
+### Fixed
+
+- **Type scale vs deck override:** `--hssf-fs-*` used `rem` (always vs `<html>`), so setting `--hssf-stage-font-size` on `.hssf-stage` did **not** enlarge titles/lists/cards.
+- `--hssf-fs-*` are now `calc(N * var(--hssf-stage-font-size))`. Deck authors can scale the whole deck with:
+
+```css
+.hssf-stage {
+  --hssf-stage-font-size: 20px;
+}
+```
+
+Default multipliers unchanged (at 16px stage root: base still 18px, hero 72px, etc.).
+
+---
+
 ## [0.2.0] — 2026-07-16
 
 Interactive teaching extras: glossary modals, motion utilities, flow/arrow connectors.

@@ -1,6 +1,9 @@
 /**
  * Deck-local styles only.
  * Use .deck-* classes — do not invent public hssf-* names.
+ *
+ * Scale all slide type (0.2.1+):
+ *   .hssf-stage { --hssf-stage-font-size: 20px; }
  */
 
 .deck-spacer {

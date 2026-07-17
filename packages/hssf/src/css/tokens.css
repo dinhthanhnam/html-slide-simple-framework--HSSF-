@@ -55,19 +55,31 @@
   --hssf-fw-bold: 700;
   --hssf-fw-extrabold: 800;
 
-  /* Root font-size on .hssf-stage (rem scale under transform) */
+  /*
+   * Type root for the logical stage.
+   * .hssf-stage sets font-size: var(--hssf-stage-font-size).
+   *
+   * IMPORTANT: --hssf-fs-* MUST be calc(... * var(--hssf-stage-font-size)),
+   * NOT rem. rem always resolves against <html>, so deck overrides of
+   * --hssf-stage-font-size on .hssf-stage would not scale component text.
+   *
+   * Deck override (styles/deck.css):
+   *   .hssf-stage { --hssf-stage-font-size: 20px; }
+   * scales body/titles that use var(--hssf-fs-*).
+   */
   --hssf-stage-font-size: 16px;
 
-  --hssf-fs-xs: 0.75rem; /* 12px */
-  --hssf-fs-sm: 0.875rem; /* 14px */
-  --hssf-fs-base: 1.125rem; /* 18px — readable body on projector */
-  --hssf-fs-md: 1.25rem; /* 20px */
-  --hssf-fs-lg: 1.5rem; /* 24px */
-  --hssf-fs-xl: 1.875rem; /* 30px */
-  --hssf-fs-2xl: 2.25rem; /* 36px */
-  --hssf-fs-3xl: 3rem; /* 48px */
-  --hssf-fs-4xl: 3.75rem; /* 60px */
-  --hssf-fs-hero: 4.5rem; /* 72px — section numbers */
+  /* Multipliers of stage root (at 16px: 12 / 14 / 18 / 20 / 24 / 30 / 36 / 48 / 60 / 72) */
+  --hssf-fs-xs: calc(0.75 * var(--hssf-stage-font-size));
+  --hssf-fs-sm: calc(0.875 * var(--hssf-stage-font-size));
+  --hssf-fs-base: calc(1.125 * var(--hssf-stage-font-size));
+  --hssf-fs-md: calc(1.25 * var(--hssf-stage-font-size));
+  --hssf-fs-lg: calc(1.5 * var(--hssf-stage-font-size));
+  --hssf-fs-xl: calc(1.875 * var(--hssf-stage-font-size));
+  --hssf-fs-2xl: calc(2.25 * var(--hssf-stage-font-size));
+  --hssf-fs-3xl: calc(3 * var(--hssf-stage-font-size));
+  --hssf-fs-4xl: calc(3.75 * var(--hssf-stage-font-size));
+  --hssf-fs-hero: calc(4.5 * var(--hssf-stage-font-size));
 
   --hssf-lh-tight: 1.2;
   --hssf-lh-snug: 1.35;
@@ -132,5 +144,5 @@
   --hssf-footer-copy: "By Rikkei Academy - Rikkei Education - All rights reserved.";
 
   /* ── Meta ─────────────────────────────────────────────── */
-  --hssf-version: "0.2.0";
+  --hssf-version: "0.2.1";
 }

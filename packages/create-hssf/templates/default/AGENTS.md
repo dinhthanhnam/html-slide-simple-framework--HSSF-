@@ -46,6 +46,17 @@ window.HSSF.init(document.querySelector("[data-hssf-canvas]"));
 - One idea per slide
 - 16:9 logical stage; avoid overflow walls of text
 
+## Type size (deck override)
+
+Scale **all** `hssf-fs-*` text via stage root (not bare `rem` / not only body):
+
+```css
+/* styles/deck.css */
+.hssf-stage {
+  --hssf-stage-font-size: 20px; /* default 16px */
+}
+```
+
 ## Allowlist (public `hssf-*`)
 
 title-block, section-block, brand-end, header, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, **flow** (node/edge/line), **arrow**, **connector**, **fx** (`hssf-fx--hover-pulse|spin|lift|scale|glow`, `hssf-fx--pulse|spin|spin-slow`), **term** (+ modal runtime), figure, footer, nav, progress

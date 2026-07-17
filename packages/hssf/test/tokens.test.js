@@ -84,6 +84,24 @@ describe("hssf design tokens (PR-02)", () => {
     assert.match(tokensCss, /--hssf-code-bg:\s*#282c34/i);
   });
 
+  it("type scale is anchored to --hssf-stage-font-size (not rem vs html)", () => {
+    // Deck override of stage root must scale component fonts (v0.2.1 fix)
+    assert.match(
+      tokensCss,
+      /--hssf-fs-base:\s*calc\(\s*1\.125\s*\*\s*var\(--hssf-stage-font-size\)\s*\)/,
+    );
+    assert.match(
+      tokensCss,
+      /--hssf-fs-hero:\s*calc\(\s*4\.5\s*\*\s*var\(--hssf-stage-font-size\)\s*\)/,
+    );
+    // Guard regression: bare rem type scale re-breaks deck overrides
+    assert.equal(
+      /--hssf-fs-base:\s*[\d.]+rem/.test(tokensCss),
+      false,
+      "--hssf-fs-base must not use rem (breaks stage-font-size override)",
+    );
+  });
+
   it("built dist/hssf.css embeds primary token when present", () => {
     if (!fs.existsSync(distCss)) {
       // Build not run yet — skip rather than fail isolated unit run

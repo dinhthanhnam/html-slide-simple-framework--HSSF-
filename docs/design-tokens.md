@@ -45,8 +45,28 @@ Syntax colors come from **official** `highlight.js/styles/atom-one-dark.css` (bu
 | `--hssf-font-sans` | Montserrat stack |
 | `--hssf-font-mono` | Courier New stack |
 | `--hssf-fw-regular` … `--hssf-fw-extrabold` | 400–800 |
-| `--hssf-stage-font-size` | `16px` on stage (rem root) |
-| `--hssf-fs-xs` … `--hssf-fs-hero` | Type scale |
+| `--hssf-stage-font-size` | Type root on `.hssf-stage` (default `16px`) |
+| `--hssf-fs-xs` … `--hssf-fs-hero` | Type scale = `calc(N * var(--hssf-stage-font-size))` |
+
+### Deck: make all slide text larger (v0.2.1+)
+
+```css
+/* styles/deck.css */
+.hssf-stage {
+  --hssf-stage-font-size: 20px; /* default 16px → ~+25% type */
+}
+```
+
+All components that use `var(--hssf-fs-*)` scale together.  
+**Do not** rely on bare `rem` for slide body text — `rem` tracks `<html>`, not the stage.
+
+To tweak one step only:
+
+```css
+.hssf-stage {
+  --hssf-fs-base: calc(1.35 * var(--hssf-stage-font-size));
+}
+```
 
 ## Geometry (16:9)
 

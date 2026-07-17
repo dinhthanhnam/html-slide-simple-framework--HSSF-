@@ -10,8 +10,8 @@ Rikkei-branded (white + red, Montserrat), shadcn-style HTML components, portable
 
 ```bash
 # CDN
-# https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.css
-# https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.js
+# https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.css
+# https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.js
 
 # Scaffold a deck
 npx @dinhthanhnam/create-hssf my-deck
@@ -20,8 +20,8 @@ npx @dinhthanhnam/create-hssf my-deck
 ## Browser API
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.0/dist/hssf.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/hssf-slides@0.2.1/dist/hssf.min.js" defer></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Auto-runs highlight.js on pre>code (Atom One Dark CSS is inside hssf.min.css)
