@@ -14,12 +14,16 @@ Run this before declaring a deck complete.
 
 ## Content
 
-- [ ] Only allowlisted `hssf-*` classes ([components/README.md](./components/README.md))
-- [ ] Overrides only as `.deck-*` in `styles/deck.css`
+- [ ] Read [charter.md](./charter.md) (thin deck, preferred components, hand-offs)
+- [ ] Prefer **preferred** allowlist ([components/README.md](./components/README.md)); avoid soft-deprecated unless justified
+- [ ] Full session **≥ 15 slides** (target 15–20+), unless user asked for shorter
+- [ ] `styles/deck.css` minimal (tokens only) — no parallel `deck-*` widget kit
 - [ ] ≤ 6 bullets / slide; ≤ ~18 lines of code
+- [ ] Bullets have claim/evidence (not orphan nouns only)
 - [ ] HTML special chars escaped in code samples
 - [ ] No real secrets / credentials
-- [ ] Images have `alt`; figures use `hssf-figure` when needed
+- [ ] Images have `alt`; architecture via `hssf-figure` (not flow topology)
+- [ ] Grid/card fragments use `data-hssf-fragment="hold"` when layout must stay stable
 - [ ] Vietnamese (or requested language) consistent
 
 ## Runtime

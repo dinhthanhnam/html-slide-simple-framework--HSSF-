@@ -29,9 +29,19 @@ Max height: `--hssf-figure-max-h` (~520px).
 
 ---
 
-## Frame (khung ảnh / screenshot)
+## Frame (khung ảnh / screenshot) — secondary
 
-Rich chrome around screenshots and photos — prefer this over bare `<img>` for demos.
+**Prefer `hssf-figure` for most images** (diagrams, infographics, photos).
+
+`hssf-frame` is **soft-deprecated as a default** ([charter](../charter.md)): easy to over-chrome. Use only when the chrome teaches something (e.g. real UI screenshot in a browser frame).
+
+| Asset type | Prefer |
+|------------|--------|
+| Architecture / infographic | `hssf-figure--shadow` (no fake browser) |
+| Terminal / console crop | `hssf-figure` or simple `--device` if needed |
+| Product UI screenshot | `hssf-frame--browser` OK |
+
+Rich chrome around screenshots — not a substitute for a clear figure:
 
 ### Simple soft frame
 

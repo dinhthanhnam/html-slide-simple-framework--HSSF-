@@ -5,12 +5,13 @@
 | **Document title** | HSSF Design Document (Rikkei Education) |
 | **Author** | TBD (Engineering / Design) |
 | **Date** | 2026-07-16 |
-| **Status** | Draft (rev. 3 — post re-review) |
+| **Status** | Draft (rev. 4 — charter / thin-deck discipline) |
 | **Scope** | Component library + runtime + scaffold CLI + sample deck + agent docs |
 | **Audience** | Senior engineers, content authors, AI coding agents |
 | **Reference deck** | `(Slide) Session 4.pptx` — Docker Compose / Dockerfile (28 slides, 16:9) |
 | **License** | **MIT** (MUST for both packages) |
 | **Normative language** | **MUST** / **SHOULD** / **MAY** as in RFC 2119 |
+| **Product charter** | [`docs/charter.md`](./docs/charter.md) — thin decks, preferred allowlist, Tailwind/figure hand-offs (normative for new work) |
 
 ---
 

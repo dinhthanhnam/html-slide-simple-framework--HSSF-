@@ -1,8 +1,13 @@
 # Flow, arrows & connectors (v0.2)
 
-Markup-first diagram system for process / state slides. Prefer this over hand-drawn SVG for linear and simple branch layouts.
+Markup-first diagram system for **short linear processes** (2–4 nodes).
 
-Complements [visual.md](./visual.md) `hssf-diagram` (lighter frame + text arrows).
+**Charter:** [soft-deprecated for architecture](../charter.md). For multi-layer / topology diagrams, prefer **`hssf-figure` + SVG/PNG**. Do not use flow as a general drawing tool.
+
+**OK:** Working → Staging → Repo · Client → Nginx → App  
+**Avoid:** Hypervisor stacks, cloud topology, anything needing accurate alignment of labeled edges as the main visual (edge layout is limited).
+
+Complements [visual.md](./visual.md) `hssf-diagram` (lighter frame + text arrows) — also prefer figure for dense diagrams.
 
 ## Flow row
 

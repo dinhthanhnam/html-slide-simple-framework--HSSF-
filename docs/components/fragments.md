@@ -1,6 +1,6 @@
 # Fragments (step reveal)
 
-**Status:** PR-05  
+**Status:** PR-05 + hold  
 **Contract:** KD-5 — author attribute only; runtime toggles `.is-visible`.
 
 ## Author markup
@@ -12,6 +12,12 @@
   <li data-hssf-fragment="fade">Bước 2 (fade = default)</li>
   <li data-hssf-fragment="highlight">Bước 3 (viền đỏ Rikkei)</li>
 </ul>
+
+<!-- Grid / cards: keep box so layout does not jump -->
+<div class="hssf-grid hssf-grid--2">
+  <article class="hssf-card" data-hssf-fragment="hold">…</article>
+  <article class="hssf-card" data-hssf-fragment="hold">…</article>
+</div>
 ```
 
 ### Rules
@@ -20,7 +26,16 @@
 |----|--------|
 | Chỉ dùng `data-hssf-fragment` | Tự thêm `.is-visible` hoặc `.hssf-fragment` |
 | Flat DOM order | Nested fragment stacks |
-| Optional value: `fade` \| `highlight` | Invent variants without docs |
+| Optional value: `fade` \| `highlight` \| **`hold`** | Invent variants without docs |
+| `hold` on grid/flex **items** that must keep size | `hold` on every list bullet (reflow is fine) |
+
+## Variants
+
+| Value | Hidden behavior | Use when |
+|-------|-----------------|----------|
+| (empty) / `fade` | `display: none` — list reflows | Steps, bullets, timeline (teaching default) |
+| `highlight` | same as fade; revealed with brand outline | Emphasize one item |
+| **`hold`** | box stays in flow (`visibility` + `opacity`); no height jump | Cards in `hssf-grid`, compare columns, fixed two-column panels |
 
 ## Runtime behavior
 
@@ -52,15 +67,18 @@ const deck = HSSF.init(canvas);
 deck.getFragmentState(); // { total, visible, nextIndex, complete, variants }
 ```
 
-## CSS
+## CSS notes
 
-- Hidden: `display: none` (list reflows — intentional for teaching).
-- `highlight`: soft red background + primary outline.
+- Default hidden: `display: none` (list reflows — intentional).
+- `hold`: does **not** use `display: none`; keeps author `display` (flex/grid/block).
+- `highlight`: soft red background + primary outline when visible.
 - `prefers-reduced-motion`: no entrance animation.
 - **Print:** all fragments forced visible (`print.css`).
+- **Do not** re-implement hold in `deck.css` unless pinning an older runtime without `hold`.
 
 ## Anti-patterns
 
 - Putting fragments outside `.hssf-slide`
-- Relying on nested `data-hssf-fragment` inside another fragment for ordered stacks
-- Styling with invented public classes instead of `data-hssf-fragment="highlight"`
+- Nested `data-hssf-fragment` for ordered stacks
+- Deck-local `!important` overrides fighting fragment CSS on modern runtimes
+- Styling with invented public classes instead of documented variants

@@ -4,7 +4,9 @@ You are editing a **Rikkei Education** HTML slide deck built with **HSSF** (HTML
 
 - **Do not** introduce React/Vue/Svelte or a bundler for simple decks.
 - **Do not** invent public `hssf-*` classes outside the allowlist / snippets below.
-- Deck-local CSS only under `.deck-*` in `styles/deck.css`.
+- Keep the deck **thin**: `styles/deck.css` only for tiny token overrides (e.g. `--hssf-stage-font-size`). **No** parallel `deck-*` widget kits.
+- Complex layout → Tailwind (or utilities) inside `.hssf-slide__inner`. Architecture → `hssf-figure` + asset (not flow topology).
+- Full training sessions: **15–20+ slides** (not 8–10 skeleton decks).
 
 ## Runtime
 
@@ -34,16 +36,17 @@ window.HSSF.init(document.querySelector("[data-hssf-canvas]"));
 
 ## Fragments
 
-- Author only: `data-hssf-fragment` or `data-hssf-fragment="fade|highlight"`
+- Author only: `data-hssf-fragment` or `data-hssf-fragment="fade|highlight|hold"`
+- **`hold`**: keeps box in layout (use on grid/flex **cards** so the slide does not jump)
+- Default / `fade`: `display:none` (lists reflow — OK for bullets/steps)
 - **Do not** set `.is-visible` yourself
 - Runtime reveals next fragment on → / Space; **resets on leave slide**
 
-## Density
+## Density & prose
 
-- ≤ 6 bullets per slide
-- Code ≤ ~18 lines
+- ≤ 6 bullets per slide; code ≤ ~18 lines
 - Escape `& < >` in HTML
-- One idea per slide
+- **One claim** per slide (+ reason/example) — not orphan noun phrases
 - 16:9 logical stage; avoid overflow walls of text
 
 ## Type size (deck override)
@@ -57,9 +60,11 @@ Scale **all** `hssf-fs-*` text via stage root (not bare `rem` / not only body):
 }
 ```
 
-## Allowlist (public `hssf-*`)
+## Allowlist — preferred (new decks)
 
-title-block, section-block, brand-end, header, **stack / cluster / split / media-split / fill / spacer**, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*` for highlight.js), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat, accent, diagram, flow, arrow, connector, fx (`hssf-fx--*`), term (+ modal), figure, **frame**, **carousel**, footer, nav, progress
+title-block, section-block, brand-end, header, stack, cluster, fill, spacer, columns, grid, card, heading, list, callout, quote, table, code (+ `language-*`), steps, timeline, compare, agenda, defs, icon-circle, icon-label, stat (sparingly), accent, term (+ modal), figure, hover fx (`hssf-fx--hover-*`), footer, nav, progress
+
+**Avoid for new teaching (legacy still in CSS):** flow/connectors as architecture, heavy frame browser/device, carousel-as-hero, continuous spin/pulse on large areas. Prefer figure + Tailwind layout when HSSF helpers are not enough.
 
 ## Terms (glossary modal)
 

@@ -2,6 +2,22 @@
 
 All notable changes to HSSF (`hssf-slides` + `@dinhthanhnam/create-hssf`) are documented here.
 
+## [0.4.0] — 2026-07-22
+
+Charter discipline + fragment `hold` (minor).
+
+### Added
+
+- **`docs/charter.md`** — product scope: thin decks, preferred components, Tailwind/figure hand-offs, 15–20+ slide sessions
+- Fragment variant **`data-hssf-fragment="hold"`** — keeps layout box (no `display:none`) for grid/flex cards
+
+### Docs
+
+- Preferred vs soft-deprecated allowlist in `docs/components/README.md`
+- Flow/media: prefer figure for architecture; frame/carousel secondary
+- Writing playbook + anti-patterns + agent checklist aligned with charter
+- Scaffold `AGENTS.md` (default + sample) updated for preferred allowlist + `hold`
+
 ## [0.3.0] — 2026-07-17
 
 Layout primitives + media frames + carousel (reduce need for Tailwind on decks).

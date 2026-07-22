@@ -1,16 +1,30 @@
 /**
- * Fragment reveal styles (PR-05 / KD-5).
+ * Fragment reveal styles (PR-05 / KD-5 + hold).
  *
- * Author: data-hssf-fragment [ = fade | highlight ]
+ * Author: data-hssf-fragment [ = fade | highlight | hold ]
  * Runtime: toggles .is-visible only
  *
- * Hidden fragments use display:none (teaching default — list reflows).
+ * Default hidden: display:none (list reflows — teaching default).
+ * hold: keep box in layout (opacity/visibility) for grid/flex cards.
  * Print: all fragments forced visible (see print.css).
  */
 
-/* Hidden until revealed */
-[data-hssf-fragment]:not(.is-visible) {
+/* Hidden until revealed — default reflow */
+[data-hssf-fragment]:not(.is-visible):not([data-hssf-fragment="hold"]) {
   display: none !important;
+}
+
+/*
+ * hold — reserve layout space (grid/flex children, cards).
+ * Do not use display:none; author class keeps display:flex/grid/block.
+ */
+[data-hssf-fragment="hold"]:not(.is-visible) {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  /* cancel accidental author is-visible animation while hidden */
+  animation: none !important;
 }
 
 /* Revealed */
@@ -18,6 +32,15 @@
   display: revert;
   opacity: 1;
   visibility: visible;
+  animation: hssf-fragment-in var(--hssf-duration) var(--hssf-ease);
+}
+
+[data-hssf-fragment="hold"].is-visible {
+  /* keep author display (flex/grid); only animate opacity/transform */
+  display: revert;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
   animation: hssf-fragment-in var(--hssf-duration) var(--hssf-ease);
 }
 

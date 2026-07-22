@@ -14,6 +14,7 @@ const root = path.resolve(__dirname, "../../..");
 const REQUIRED = [
   "AGENTS.md",
   "docs/README.md",
+  "docs/charter.md",
   "docs/quickstart.md",
   "docs/design-tokens.md",
   "docs/chrome.md",
@@ -47,16 +48,25 @@ describe("agent documentation tree (PR-12)", () => {
     }
   });
 
-  it("docs index links quickstart and checklist", () => {
+  it("docs index links charter, quickstart and checklist", () => {
     const index = fs.readFileSync(path.join(root, "docs/README.md"), "utf8");
+    assert.match(index, /charter\.md/);
     assert.match(index, /quickstart\.md/);
     assert.match(index, /agent-checklist\.md/);
     assert.match(index, /writing-a-deck\.md/);
   });
 
+  it("charter states thin deck and hand-offs", () => {
+    const charter = fs.readFileSync(path.join(root, "docs/charter.md"), "utf8");
+    assert.match(charter, /Tailwind/i);
+    assert.match(charter, /15\s*[–-]\s*20/);
+    assert.match(charter, /thin/i);
+  });
+
   it("root AGENTS.md points at docs and DESIGN", () => {
     const agents = fs.readFileSync(path.join(root, "AGENTS.md"), "utf8");
     assert.match(agents, /docs\/README\.md/);
+    assert.match(agents, /docs\/charter\.md/);
     assert.match(agents, /DESIGN\.md/);
     assert.match(agents, /pnpm build/);
   });
@@ -69,6 +79,7 @@ describe("agent documentation tree (PR-12)", () => {
     assert.match(ag, /Allowlist/);
     assert.match(ag, /Snippets/);
     assert.match(ag, /data-hssf-fragment/);
+    assert.match(ag, /hold/);
     assert.match(ag, /hssf-title-block/);
     assert.match(ag, /npx serve/);
   });

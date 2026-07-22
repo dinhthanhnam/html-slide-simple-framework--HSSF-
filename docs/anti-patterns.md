@@ -2,6 +2,8 @@
 
 Things agents and authors **must not** do in HSSF decks.
 
+See also [charter.md](./charter.md).
+
 ## Structure
 
 | ❌ Bad | ✅ Good |
@@ -12,17 +14,21 @@ Things agents and authors **must not** do in HSSF decks.
 | Multiple `.is-active` slides | Exactly one active; runtime manages it |
 | Manual `.is-visible` on fragments | Only `data-hssf-fragment`; runtime toggles |
 | Hand-rolled modal for glossary | `hssf-term` + runtime modal |
-| Absolute SVG only for simple A→B→C | Prefer `hssf-flow` + `hssf-arrow` |
+| `hssf-flow` for architecture / topology | `hssf-figure` + SVG/PNG diagram |
+| 8–10 slides for a full RE session | **15–20+** teaching slides |
 
 ## Styling
 
 | ❌ Bad | ✅ Good |
 |--------|--------|
-| Invent `hssf-foo-bar` classes | Allowlist only; else `.deck-*` |
+| Invent `hssf-foo-bar` classes | Preferred allowlist; propose new blocks upstream |
+| Large `deck-*` widget kits (cards, layers, pills) | Minimal `deck.css` (tokens only); layout via Tailwind if needed |
 | Random hex blues/greens for brand UI | Tokens (`--hssf-color-primary`, soft, semantic) |
 | Arial / Roboto for UI | Montserrat stack |
 | Walls of 12pt text | ≤6 bullets, large type, breathing room |
 | Material Icons dependency | Text / emoji / author SVG in icon-circle |
+| Fake browser frame on infographics | Plain `hssf-figure` |
+| Mixing `hssf-term` + `hssf-term--chip` randomly | One term style per deck |
 
 ## Code
 
@@ -47,10 +53,13 @@ Things agents and authors **must not** do in HSSF decks.
 | ❌ Bad | ✅ Good |
 |--------|--------|
 | 15 fragments on one slide | 2–4 reveals |
+| `display:none` fragments on grid cards (layout jump) | `data-hssf-fragment="hold"` |
 | Continuous `hssf-fx--spin` on whole slide | One small attention icon max |
 | Skip section dividers in long decks | Clear `section-block` rhythm |
 | End slide without brand-end | `hssf-brand-end` + light footer |
 | Wrong copyright line | Rikkei Academy - Rikkei Education string |
+| Noun-only “skeleton” bullets | Claim + reason / example / command |
+| Component-zoo showcase as the session | Recipes from [writing-a-deck.md](./writing-a-deck.md) |
 
 ## Accessibility / QA
 

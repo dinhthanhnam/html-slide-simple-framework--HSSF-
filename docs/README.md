@@ -6,8 +6,9 @@ Agent-first docs for **Rikkei Education** HTML slides.
 
 | Doc | Audience |
 |-----|----------|
+| [charter.md](./charter.md) | **Scope** — thin deck, what HSSF owns, Tailwind/figure hand-off |
 | [quickstart.md](./quickstart.md) | Human + agent — install, scaffold, serve |
-| [writing-a-deck.md](./writing-a-deck.md) | Playbook cấu trúc buổi học |
+| [writing-a-deck.md](./writing-a-deck.md) | Playbook cấu trúc buổi học (15–20+ slides) |
 | [agent-checklist.md](./agent-checklist.md) | Checklist trước khi giao deck |
 | [anti-patterns.md](./anti-patterns.md) | Việc **không** làm |
 | [../AGENTS.md](../AGENTS.md) | Entry cho coding agents trong monorepo |
@@ -41,7 +42,7 @@ Agent-first docs for **Rikkei Education** HTML slides.
 | Path | Role |
 |------|------|
 | [sample-scenario.md](./sample-scenario.md) | Kịch bản Git fresher + map component |
-| [../examples/sample-deck/](../examples/sample-deck/) | 18-slide deck chạy được |
+| [../examples/sample-deck/](../examples/sample-deck/) | ~18-slide **teaching** sample (not a component zoo) |
 | [../DESIGN.md](../DESIGN.md) | Architecture + PR plan |
 
 ## Scaffold (generated decks)

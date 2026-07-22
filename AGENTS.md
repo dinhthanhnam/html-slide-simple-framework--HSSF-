@@ -39,20 +39,22 @@ reference/               # brand extraction notes
 
 ## When authoring slides
 
-1. Prefer editing `examples/sample-deck` or scaffolding via `create-hssf`.
-2. Public classes: allowlist in [`docs/components/README.md`](./docs/components/README.md).
-3. Fragments: [`docs/components/fragments.md`](./docs/components/fragments.md).
-4. Playbook: [`docs/writing-a-deck.md`](./docs/writing-a-deck.md).
-5. Before done: [`docs/agent-checklist.md`](./docs/agent-checklist.md).
+1. Read [`docs/charter.md`](./docs/charter.md) first (thin deck, preferred vs hand-off).
+2. Prefer editing `examples/sample-deck` or scaffolding via `create-hssf`.
+3. Public classes: **preferred** allowlist in [`docs/components/README.md`](./docs/components/README.md).
+4. Fragments: [`docs/components/fragments.md`](./docs/components/fragments.md) (`hold` for grids).
+5. Playbook: [`docs/writing-a-deck.md`](./docs/writing-a-deck.md) — full sessions **15–20+** slides.
+6. Before done: [`docs/agent-checklist.md`](./docs/agent-checklist.md).
 
 ## When changing the framework
 
-1. Update tokens/components CSS under `packages/hssf/src/css/`.
-2. Keep dual build IIFE + ESM; highlight.js + Atom One Dark stay bundled.
-3. Scale model remains absolute-center + `translate(-50%,-50%) scale(s)` — no CSS `zoom`.
-4. Add/extend unit tests; keep Playwright no-scrollbar acceptance.
-5. Update `docs/` + scaffold `templates/*/AGENTS.md` if public API/classes change.
-6. Do not expand scope to multi-brand or visual admin.
+1. Respect charter: **narrow PRs**, soft-deprecate before delete, hand off layout/diagrams when HSSF is weak.
+2. Update tokens/components CSS under `packages/hssf/src/css/` only when needed.
+3. Keep dual build IIFE + ESM; highlight.js + Atom One Dark stay bundled.
+4. Scale model remains absolute-center + `translate(-50%,-50%) scale(s)` — no CSS `zoom`.
+5. Add/extend unit tests; keep Playwright no-scrollbar acceptance.
+6. Update `docs/` + scaffold `templates/*/AGENTS.md` if public API/classes change.
+7. Do not expand scope to multi-brand, visual admin, or a second layout engine competing with Tailwind.
 
 ## Generated decks
 

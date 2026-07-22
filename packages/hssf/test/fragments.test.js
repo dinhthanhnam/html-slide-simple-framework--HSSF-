@@ -370,11 +370,12 @@ describe("reset-on-leave via navigation (PR-05)", () => {
 });
 
 describe("fragment CSS artifacts (PR-05)", () => {
-  it("fragments.css encodes display:none and highlight variant", () => {
+  it("fragments.css encodes display:none, hold, and highlight variant", () => {
     const css = fs.readFileSync(
       path.join(__dirname, "../src/css/fragments.css"),
       "utf8",
     );
+    assert.match(css, /data-hssf-fragment="hold"/);
     assert.match(css, /display:\s*none/);
     assert.match(css, /data-hssf-fragment="highlight"/);
     assert.match(css, /prefers-reduced-motion/);
