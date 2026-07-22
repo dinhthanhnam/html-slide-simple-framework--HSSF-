@@ -20,6 +20,10 @@ import {
   resetFragments,
   revealNextFragment,
 } from "./fragments.js";
+import {
+  syncAdvanceHint,
+  willNextAdvanceSlide,
+} from "./advance-hint.js";
 
 const INTERACTIVE_SEL =
   "a, button, input, textarea, select, label, [data-hssf-no-click-nav], [contenteditable='true']";
@@ -31,6 +35,7 @@ const INTERACTIVE_SEL =
  * @property {boolean} [clickNav=false]
  * @property {boolean} [swipe=true]
  * @property {boolean} [autofocus=false]
+ * @property {boolean} [advanceHint=true] Show toaster when next advances slide
  * @property {(detail: { index: number, prevIndex: number }) => void} [onChange]
  */
 
@@ -49,6 +54,12 @@ export function createNavigation(canvas, options = {}, win = globalThis) {
         canvas.getAttribute("data-hssf-click-nav") === "true"),
     swipe: options.swipe !== false,
     autofocus: options.autofocus === true,
+    advanceHint:
+      options.advanceHint !== false &&
+      !(
+        typeof canvas.getAttribute === "function" &&
+        canvas.getAttribute("data-hssf-advance-hint") === "off"
+      ),
     onChange: options.onChange,
   };
 
@@ -235,6 +246,17 @@ export function createNavigation(canvas, options = {}, win = globalThis) {
     }
     setDisabled(prevBtn, index <= 0 && !fragsVisible);
     setDisabled(nextBtn, index >= list.length - 1 && !fragsLeft);
+
+    const willAdvance = willNextAdvanceSlide(slide, index, list.length);
+    syncAdvanceHint(
+      canvas,
+      { willAdvanceSlide: willAdvance, enabled: opts.advanceHint },
+      win,
+    );
+    // Soft pulse on the Next control when it advances the deck
+    if (nextBtn && nextBtn.classList) {
+      nextBtn.classList.toggle("hssf-nav__btn--will-advance", willAdvance);
+    }
   }
 
   function onKeyDown(e) {

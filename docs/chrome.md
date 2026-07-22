@@ -12,14 +12,29 @@
     │       └── section.hssf-slide[data-hssf-slide] × N
     │           ├── .hssf-slide__inner
     │           └── footer.hssf-footer
-    └── nav.hssf-nav
-        ├── [data-hssf-prev]
-        ├── [data-hssf-counter]
-        ├── [data-hssf-next]
-        └── [data-hssf-fullscreen]
+    ├── nav.hssf-nav
+    │   ├── [data-hssf-prev]
+    │   ├── [data-hssf-counter]
+    │   ├── [data-hssf-next]
+    │   └── [data-hssf-fullscreen]
+    └── .hssf-advance-hint[data-hssf-advance-hint]  (injected by runtime)
 ```
 
 Nav and progress are **viewport chrome** — they do **not** scale with the stage.
+
+## Advance-slide hint (v0.5)
+
+Toaster bottom-right (above nav) when the **next** next-action will change slide (all fragments on the current slide are done / none exist), and you are not on the last slide.
+
+| Behavior | Detail |
+|----------|--------|
+| Default | **On** |
+| UI | Pill “→ Sang slide tiếp theo” + pulse dot; soft pulse on `[data-hssf-next]` |
+| Canvas flag | `data-hssf-will-advance="true"` while visible |
+| Disable | `HSSF.init(el, { advanceHint: false })` or `data-hssf-advance-hint="off"` on canvas |
+| Print | Hidden |
+
+No author markup required — runtime injects the toaster.
 
 ## Slide variants
 

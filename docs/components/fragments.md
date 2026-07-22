@@ -44,6 +44,7 @@
 3. **Prev (←):** hide last visible fragment; if none → previous slide.
 4. **Leave slide:** remove all `.is-visible` (**reset**). Re-enter starts from zero.
 5. **Home / End:** jump slide + reset fragments on leave.
+6. **Advance hint (v0.5):** when no fragments remain (or none exist) and not last slide, a toaster + next-button pulse signals that the next next-action goes to the next slide — see [chrome.md](../chrome.md).
 
 ## Events
 

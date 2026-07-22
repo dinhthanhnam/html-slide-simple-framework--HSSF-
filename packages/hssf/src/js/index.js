@@ -37,8 +37,13 @@ import {
 } from "./fragments.js";
 import { attachTerms } from "./terms.js";
 import { attachCarousels } from "./carousel.js";
+import {
+  ensureAdvanceHint,
+  syncAdvanceHint,
+  willNextAdvanceSlide,
+} from "./advance-hint.js";
 
-export const version = "0.3.0";
+export const version = "0.5.0";
 
 export {
   highlightCode,
@@ -73,6 +78,9 @@ export {
   emitFragmentEvent,
   attachTerms,
   attachCarousels,
+  ensureAdvanceHint,
+  syncAdvanceHint,
+  willNextAdvanceSlide,
 };
 
 /**
@@ -90,6 +98,7 @@ export {
  *   navigation?: boolean,
  *   terms?: boolean,
  *   carousel?: boolean,
+ *   advanceHint?: boolean,
  * }} [options]
  */
 export function init(root, options = {}) {
@@ -130,6 +139,7 @@ export function init(root, options = {}) {
       clickNav: options.clickNav,
       swipe: options.swipe,
       autofocus: options.autofocus,
+      advanceHint: options.advanceHint,
     });
   } else {
     updateChrome(root, ensureActiveSlide(root));

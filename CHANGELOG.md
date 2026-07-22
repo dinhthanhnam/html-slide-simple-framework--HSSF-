@@ -2,6 +2,16 @@
 
 All notable changes to HSSF (`hssf-slides` + `@dinhthanhnam/create-hssf`) are documented here.
 
+## [0.5.0] — 2026-07-22
+
+### Added
+
+- **Advance-slide hint:** toaster bottom-right when the next next-action advances to the next slide (fragments complete / none left). Pulse on `[data-hssf-next]`. Disable via `advanceHint: false` or `data-hssf-advance-hint="off"`.
+
+### Docs
+
+- `docs/chrome.md` + fragments note for advance hint
+
 ## [0.4.0] — 2026-07-22
 
 Charter discipline + fragment `hold` (minor).

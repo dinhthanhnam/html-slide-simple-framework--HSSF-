@@ -266,6 +266,107 @@
   user-select: none;
 }
 
+/* Next will change slide — soft pulse on › control */
+.hssf-nav__btn--will-advance:not(:disabled) {
+  background: rgba(190, 39, 39, 0.55);
+  box-shadow: 0 0 0 0 rgba(190, 39, 39, 0.55);
+  animation: hssf-nav-will-advance 1.6s ease-out infinite;
+}
+
+/* ── Advance-slide toaster (viewport chrome, not scaled) ── */
+
+.hssf-advance-hint {
+  position: absolute;
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
+  bottom: calc(
+    var(--hssf-nav-min-height) + 0.65rem + env(safe-area-inset-bottom, 0px)
+  );
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: min(18rem, calc(100vw - 1.5rem));
+  padding: 0.55rem 0.9rem 0.55rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(190, 39, 39, 0.94);
+  color: #ffffff;
+  font-family: var(--hssf-font-sans);
+  font-size: 0.8125rem;
+  font-weight: var(--hssf-fw-semibold);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(190, 39, 39, 0.3);
+  opacity: 0;
+  transform: translateY(0.5rem);
+  pointer-events: none;
+  transition:
+    opacity var(--hssf-duration) var(--hssf-ease),
+    transform var(--hssf-duration) var(--hssf-ease);
+}
+
+.hssf-advance-hint.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hssf-advance-hint[hidden] {
+  display: none !important;
+}
+
+.hssf-advance-hint__dot {
+  flex: 0 0 auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  animation: hssf-advance-hint-pulse 1.5s ease-out infinite;
+}
+
+.hssf-advance-hint__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes hssf-advance-hint-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes hssf-nav-will-advance {
+  0% {
+    box-shadow: 0 0 0 0 rgba(190, 39, 39, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(190, 39, 39, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(190, 39, 39, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hssf-advance-hint__dot,
+  .hssf-nav__btn--will-advance:not(:disabled) {
+    animation: none;
+  }
+
+  .hssf-advance-hint {
+    transition: none;
+  }
+}
+
 /* ── Live region (sr-only already in base) ──────────────── */
 
 .hssf-live {
